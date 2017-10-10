@@ -1,0 +1,33 @@
+﻿package com.go2wheel.katharsis.dto.converter;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.go2wheel.domain.LoginAttempt;
+import com.go2wheel.jwt.JwtUtil;
+import com.go2wheel.katharsis.dto.LoginAttemptDto;
+import com.go2wheel.vo.BootUserPrincipal;
+
+@Component
+public class LoginAttemptDtoConverter implements DtoConverter<LoginAttempt, LoginAttemptDto> {
+	
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@Override
+	public LoginAttemptDto entity2Dto(LoginAttempt entity, Scenario scenario) {
+		LoginAttemptDto dto = new LoginAttemptDto();
+		BeanUtils.copyProperties(entity, dto);
+		return dto;
+	}
+	
+	public LoginAttemptDto newDto(LoginAttemptDto dto, BootUserPrincipal pricipal, LoginAttempt loginAttemp) {
+		dto.setId(loginAttemp.getId());
+		dto.setSuccess(true);
+		dto.setPassword("");
+		dto.setJwtToken(jwtUtil.issuePrincipalToken(pricipal));
+		dto.setUser(pricipal.getId());
+		return dto;
+	}
+}

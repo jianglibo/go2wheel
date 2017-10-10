@@ -1,0 +1,165 @@
+﻿package com.go2wheel.katharsis.rest.post;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.go2wheel.JsonApiPostBodyWrapper;
+import com.go2wheel.JsonApiPostBodyWrapperBuilder;
+import com.go2wheel.KatharsisBase;
+import com.go2wheel.JsonApiPostBodyWrapper.CreateListBody;
+import com.go2wheel.config.JsonApiResourceNames;
+import com.go2wheel.domain.BootGroup;
+import com.go2wheel.domain.BootUser;
+import com.go2wheel.domain.GroupUserRelation;
+import com.go2wheel.domain.Post;
+import com.go2wheel.jwt.JwtUtil;
+import com.go2wheel.katharsis.dto.MediumDto;
+import com.go2wheel.katharsis.dto.PostDto;
+import com.go2wheel.katharsis.dto.UserDto;
+import com.go2wheel.repository.GroupUserRelationRepository;
+import com.go2wheel.repository.UnreadRepository;
+
+public class TestPostApi  extends KatharsisBase {
+	
+	@Autowired
+	private GroupUserRelationRepository guRepo;
+	
+	@Autowired
+	private UnreadRepository unreadRepo;
+	
+	@Before
+	public void b() throws JsonParseException, JsonMappingException, IOException {
+		initTestUser();
+	}
+
+	@Test
+	public void tAddOneByForm() throws JsonParseException, JsonMappingException, IOException {
+		HttpResponse apacheResponse = uploadFile(jwt1, Paths.get("fixturesingit", "v.js"));
+		String url = apacheResponse.getFirstHeader("location").getValue();
+		response = requestForBody(jwt1, url);
+		List<MediumDto> ms = getList(response, MediumDto.class); 
+		assertThat(ms.size(), equalTo(1));
+		
+		MediumDto m = ms.get(0);
+		
+		BootUser b3 = tutil.createBootUser("b3", "123");
+		BootUser b4 = tutil.createBootUser("b4", "123");
+		
+		BootGroup bg = new BootGroup("group");
+		bg.setCreator(user1);
+		groupRepo.save(bg);
+		
+		GroupUserRelation gur = new GroupUserRelation(bg, b3);
+		guRepo.save(gur);
+		
+		gur = new GroupUserRelation(bg, b4);
+		guRepo.save(gur);
+		
+		// html form post.
+		apacheResponse = postPost(jwt1, "atitle", "acontent"
+				,Arrays.asList(m.getId())
+				,Arrays.asList(user1.getId(), user2.getId())
+				,Arrays.asList(bg.getId())
+				,Paths.get("fixturesingit", "v.js"));
+		
+		url = apacheResponse.getFirstHeader("location").getValue();
+		response = requestForBody(jwt1, url);
+		writeDto(response, getResourceName(), "formpost-result");
+		PostDto pd = getOne(response, PostDto.class);
+		assertItemNumber(response, PostDto.class, 1);
+		
+		assertThat(unreadRepo.count(), equalTo(4L));
+		
+		response = requestForBody(jwt1, getItemUrl(pd.getId()) + "/sharedUsers");
+		assertItemNumber(response, UserDto.class, 4);
+	}	
+	
+	@Test
+	public void tAddOneByRest() throws JsonParseException, JsonMappingException, IOException {
+		
+		HttpResponse apacheResponse = uploadFile(jwt1, Paths.get("fixturesingit", "v.js"));
+		String url = apacheResponse.getFirstHeader("location").getValue();
+		response = requestForBody(jwt1, url);
+		
+		MediumDto m = getList(response, MediumDto.class).get(0);
+		
+		BootUser b3 = tutil.createBootUser("b3", "123");
+		BootUser b4 = tutil.createBootUser("b4", "123");
+		
+		BootGroup bg = new BootGroup("group");
+		bg.setCreator(user1);
+		groupRepo.save(bg);
+		
+		GroupUserRelation gur = new GroupUserRelation(bg, b3);
+		guRepo.save(gur);
+		
+		gur = new GroupUserRelation(bg, b4);
+		guRepo.save(gur);
+		
+		// we have a group with 2 members.
+		
+		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListRelationBuilder(getResourceName())
+				.addAttributePair("title", "title")
+				.addAttributePair("content", "content")
+				.addRelation("media", JsonApiResourceNames.MEDIUM, m.getId())
+				.addRelation("sharedUsers", JsonApiResourceNames.BOOT_USER, user1.getId(),user2.getId())
+				.addRelation("sharedGroups", JsonApiResourceNames.BOOT_GROUP, bg.getId())
+				.build();
+		
+		
+		String s = objectMapper.writeValueAsString(jbw);
+		writeDto(s, getResourceName(), "postcontent");
+		ResponseEntity<String> response = postItemWithContent(s, jwt1);
+		
+		response.getHeaders().containsKey(JwtUtil.REFRESH_HEADER_NAME);
+		writeDto(response, getResourceName(), ActionNames.POST_RESULT);
+		PostDto newPost = getOne(response.getBody(), PostDto.class);
+		assertThat(newPost.getTitle(), equalTo("title"));
+		
+		
+		response = requestForBody(jwt1, getItemUrl(newPost.getId()) + "/sharedUsers");
+		assertItemNumber(response, UserDto.class, 4);
+		
+		
+		// get all posts, when no filter given toAll filter is added. toAll attribute of this post is false, So no item should be return.
+		response = requestForBody(jwt1, getBaseURI());
+		assertItemNumber(response, PostDto.class, 0);
+		
+		Post p = postRepo.findOne(newPost.getId());
+		p.setToAll(true);
+		postRepo.save(p);
+		response = requestForBody(jwt1, getBaseURI());
+		assertItemNumber(response, PostDto.class, 1);
+		
+		// get this post
+		response = requestForBody(jwt1, getItemUrl(newPost.getId()));
+		writeDto(response, getResourceName(), ActionNames.GET_ONE);
+		
+		// get this post include media
+		response = requestForBody(jwt1, getItemUrl(newPost.getId()) + "?include=media");
+		writeDto(response, getResourceName(), ActionNames.GET_ONE_INCLUDE);
+		PostDto post = getOne(response, PostDto.class);
+		assertThat(post.getMedia().size(), equalTo(1));
+		
+		deleteByExchange(jwt1, getItemUrl(newPost.getId()));
+	}
+
+
+	@Override
+	protected String getResourceName() {
+		return JsonApiResourceNames.POST;
+	}
+}
