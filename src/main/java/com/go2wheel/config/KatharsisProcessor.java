@@ -106,7 +106,8 @@ public class KatharsisProcessor implements BeanFactoryAware {
         InputStream in = null;
 
         try {
-            JsonPath jsonPath = new PathBuilder(resourceRegistry).buildPath(getRequestPath(request));
+            @SuppressWarnings("deprecation")
+			JsonPath jsonPath = new PathBuilder(resourceRegistry).buildPath(getRequestPath(request));
 
             Map<String, Set<String>> parameters = getParameters(request);
 
@@ -219,7 +220,8 @@ public class KatharsisProcessor implements BeanFactoryAware {
             return null;
         }
 
-        Scanner s = new Scanner(is).useDelimiter("\\A");
+        @SuppressWarnings("resource")
+		Scanner s = new Scanner(is).useDelimiter("\\A");
         String requestBody = s.hasNext() ? s.next() : "";
 
         if (requestBody == null || requestBody.isEmpty()) {

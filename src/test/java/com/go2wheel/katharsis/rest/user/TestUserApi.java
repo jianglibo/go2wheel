@@ -52,7 +52,7 @@ public class TestUserApi  extends KatharsisBase {
 		BootUser bu = tutil.createBootUser("b1", "123", "a", "b", "c");
 		Long[] roleids = bu.getRoles().stream().map(r -> r.getId()).toArray(size -> new Long[size]);
 		
-		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListBuilder(getResourceName())
 				.addAttributePair("name", "name1334")
 				.addAttributePair("email", "ab@c.com")
 				.addAttributePair("mobile", "13777777777")
@@ -92,7 +92,7 @@ public class TestUserApi  extends KatharsisBase {
 		
 		Long[] roleids = bu.getRoles().stream().map(r -> r.getId()).toArray(size -> new Long[size]);
 		
-		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListBuilder(getResourceName())
 				.addAttributePair("name", "name1334")
 				.addAttributePair("email", "ab@c.com")
 				.addAttributePair("mobile", "13777777777")

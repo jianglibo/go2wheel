@@ -14,6 +14,7 @@ import com.go2wheel.message.WxBodyUtil;
 
 public abstract class WxBase extends Tbase {
 	
+	@SuppressWarnings("unused")
 	private static String mt = "application/vnd.api+json;charset=UTF-8";
 	
 	private static Path dtosPath = Paths.get("fixturesingit", "wx");

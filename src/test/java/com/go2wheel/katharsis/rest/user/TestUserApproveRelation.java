@@ -55,7 +55,7 @@ public class TestUserApproveRelation  extends KatharsisBase {
 		ApproveDto dto = getList(response, ApproveDto.class).get(0);
 		
 		// who can approve join? the receiver user1.
-		JsonApiPostBodyWrapper<?> jaw = JsonApiPostBodyWrapperBuilder.getObjectRelationBuilder(JsonApiResourceNames.APPROVE)
+		JsonApiPostBodyWrapper<?> jaw = JsonApiPostBodyWrapperBuilder.getOneBuilder(JsonApiResourceNames.APPROVE)
 				.addAttributePair("state", ApproveState.APPROVED)
 				.dtoApplyTo("state")
 				.build();

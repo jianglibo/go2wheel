@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.go2wheel.WxBase;
-import com.go2wheel.api.AutoReplyRule.AutoReplySetting;
 
 public class TestAutoReplyRule extends WxBase {
 	

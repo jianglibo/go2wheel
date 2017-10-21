@@ -31,6 +31,7 @@ public class TestHadoopFs extends Tbase {
 	}
 	
 
+	@SuppressWarnings("unused")
 	@Test
 	public void tls() {
 		HadoopFsResult hfr = hadoopFs.put(testUtil.HDFS_USER_TEST_FOLDER, Paths.get("fixturesingit", "lst.txt"));

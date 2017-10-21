@@ -25,7 +25,7 @@ public class TestLoginAttemptApi  extends KatharsisBase {
 	@Test
 	public void tWrongCredential() throws JsonParseException, JsonMappingException, IOException {
 		
-		JsonApiPostBodyWrapper<?> jbw = JsonApiPostBodyWrapperBuilder.getObjectRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<?> jbw = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName())
 				.addAttributePair("username", "admin")
 				.addAttributePair("password", "123xisld")
 				.build();
@@ -43,7 +43,7 @@ public class TestLoginAttemptApi  extends KatharsisBase {
 	public void tRightCredential() throws JsonParseException, JsonMappingException, IOException {
 
 		
-		JsonApiPostBodyWrapper<?> jbw = JsonApiPostBodyWrapperBuilder.getObjectRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<?> jbw = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName())
 				.addAttributePair("username", "admin")
 				.addAttributePair("password", "123456")
 				.build();

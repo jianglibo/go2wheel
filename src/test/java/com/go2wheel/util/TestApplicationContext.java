@@ -23,6 +23,7 @@ public class TestApplicationContext extends Tbase {
 	@Autowired
 	private Repositories repositories;
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private DtoEntityMapper dtoEntityMapper;
 	
@@ -34,6 +35,7 @@ public class TestApplicationContext extends Tbase {
 		assertThat(n, greaterThan(0L));
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Test
 	public void t() {
 		Map<String, RepositoryBase> rbs = context.getBeansOfType(RepositoryBase.class);

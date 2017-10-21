@@ -111,7 +111,7 @@ public class TestPostApi  extends KatharsisBase {
 		
 		// we have a group with 2 members.
 		
-		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListBuilder(getResourceName())
 				.addAttributePair("title", "title")
 				.addAttributePair("content", "content")
 				.addRelation("media", JsonApiResourceNames.MEDIUM, m.getId())

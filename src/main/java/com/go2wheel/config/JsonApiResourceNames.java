@@ -5,6 +5,12 @@ public class JsonApiResourceNames {
 	public static final String LOGIN_ATTEMPT = "loginAttempts";
 	public static final String BOOT_USER = "users";
 	public static final String BOOT_GROUP = "groups";
+	
+	public static final String MANUFACTURER = "manufacturers";
+	
+	public static final String TAG = "tags";
+	public static final String MT_SERIES = "series";
+	public static final String MT_MODEL = "models";
 	public static final String ROLE = "roles";
 	
 	public static final String UNREAD = "unreads";

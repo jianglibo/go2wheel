@@ -20,6 +20,7 @@ public class TestClient extends KatharsisBase {
 	@Autowired
 	private KatharsisClient katharsisClient;
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void t() {
 		ResourceRepositoryV2<RoleDto, Long> taskRepo = katharsisClient.getRepositoryForType(RoleDto.class);

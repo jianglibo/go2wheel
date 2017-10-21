@@ -51,7 +51,7 @@ public class TestPostGroupRelation  extends KatharsisBase {
 		gur = new GroupUserRelation(bg, user2);
 		guRepo.save(gur);
 		
-		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<CreateListBody> jbw = JsonApiPostBodyWrapperBuilder.getListBuilder(getResourceName())
 				.addAttributePair("title", "title")
 				.addAttributePair("content", "content")
 				.build();

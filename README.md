@@ -12,3 +12,7 @@ $arr_result['user_info']->openId = $result->openId
 * new repostory
 * new jpa facade implementation.
 * new dto repository
+
+## add relations
+
+bidirectional relations.

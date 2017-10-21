@@ -14,6 +14,7 @@ import com.go2wheel.katharsis.dto.UserDto;
 
 public class TestBeanUtil {
 
+	@SuppressWarnings("unused")
 	@Test
 	public void t() {
 		PropertyDescriptor[] pds = BeanUtils.getPropertyDescriptors(UserDto.class);

@@ -42,6 +42,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.go2wheel.config.JsonApiResourceNames;
 import com.go2wheel.config.StatelessCSRFFilter;
 import com.go2wheel.constant.AppErrorCodes;
+import com.go2wheel.domain.BaseEntity;
 import com.go2wheel.domain.BootUser;
 import com.go2wheel.domain.Post;
 import com.go2wheel.util.UuidUtil;
@@ -223,8 +224,21 @@ public abstract class KatharsisBase extends Tbase {
 		postRepo.deleteAll();
 		mediumRepo.deleteAll();
 		bootUserRepo.deleteAll();
-		
 	}
+	
+	public void deleteAllTags() {
+		tagRepo.deleteAll();
+	}
+	
+	public void deleteAllManufacturers() {
+		mtSeriesRepo.deleteAll();
+		manufacturerRepo.deleteAll();
+	}
+	
+	public void deleteAllMtSerieses() {
+		mtSeriesRepo.deleteAll();
+	}
+
 	
 	public void deleteAllMedia() {
 		mediumRepo.deleteAll();
@@ -356,7 +370,7 @@ public abstract class KatharsisBase extends Tbase {
 	
 	public String getJwtToken(String username, String password, String...roles) throws IOException {
 	
-		JsonApiPostBodyWrapper<?> jaw = JsonApiPostBodyWrapperBuilder.getObjectRelationBuilder(JsonApiResourceNames.LOGIN_ATTEMPT)
+		JsonApiPostBodyWrapper<?> jaw = JsonApiPostBodyWrapperBuilder.getOneBuilder(JsonApiResourceNames.LOGIN_ATTEMPT)
 				.addAttributePair("username", username)
 				.addAttributePair("password", password)
 				.build();
@@ -511,10 +525,10 @@ public abstract class KatharsisBase extends Tbase {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private String getRelationshipUrl(String content, String resoureName, boolean self) throws JsonParseException, JsonMappingException, IOException {
+	private String extractRelationshipUrl(String content, String propertyName, boolean self) throws JsonParseException, JsonMappingException, IOException {
 		Map<String, Object> m = objectMapper.readValue(content, Map.class);
 		Map<String, Object> dest = m;
-		String[] paths = new String[]{"data", "relationships", resoureName, "links"};
+		String[] paths = new String[]{"data", "relationships", propertyName, "links"};
 		for(String seg : paths) {
 			dest = (Map<String, Object>) dest.get(seg);
 		}
@@ -525,11 +539,19 @@ public abstract class KatharsisBase extends Tbase {
 		}
 	}
 	
-	protected String getRelationshipUrlSelf(String content, String resoureName) throws JsonParseException, JsonMappingException, IOException {
-		return getRelationshipUrl(content, resoureName, true);
+	protected String buildRelationUrl(String resourceName, Long resourceId, String propertyName) {
+		return getItemUrl(resourceName, resourceId) + "/" + propertyName;
 	}
-	protected String getRelationshipUrlRelated(String content, String resoureName) throws JsonParseException, JsonMappingException, IOException {
-		return getRelationshipUrl(content, resoureName, false);
+	
+	protected  <T extends BaseEntity> String buildRelationUrl(T ent, String propertyName) {
+		return getItemUrl(ent.getId()) + "/" + propertyName;
+	}
+	
+	protected String extractRelationshipUrlSelf(String content, String propertyName) throws JsonParseException, JsonMappingException, IOException {
+		return extractRelationshipUrl(content, propertyName, true);
+	}
+	protected String extractRelationshipUrlRelated(String content, String propertyName) throws JsonParseException, JsonMappingException, IOException {
+		return extractRelationshipUrl(content, propertyName, false);
 	}
 	
 	@SuppressWarnings("unchecked")

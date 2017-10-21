@@ -5,14 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.github.kristofa.brave.Brave;
-import com.github.kristofa.brave.InheritableServerClientAndLocalSpanState;
-import com.twitter.zipkin.gen.Endpoint;
-
-import io.katharsis.brave.BraveModule;
-import io.katharsis.module.Module;
 import io.katharsis.repository.filter.AbstractDocumentFilter;
-import io.katharsis.repository.filter.DocumentFilter;
 import io.katharsis.repository.filter.DocumentFilterChain;
 import io.katharsis.repository.filter.DocumentFilterContext;
 import io.katharsis.repository.response.Response;
@@ -61,11 +54,14 @@ public class KatharsisModuleConfig {
 	
 	public static class MyDFilterModule extends AbstractDocumentFilter {
 
+		@SuppressWarnings("unused")
 		private DocumentFilterContext filterRequestContext;
+		@SuppressWarnings("unused")
 		private DocumentFilterChain chain;
 		
 		@Override
 		public Response filter(DocumentFilterContext filterRequestContext, DocumentFilterChain chain) {
+			@SuppressWarnings("unused")
 			String a = "5";
 			return super.filter(filterRequestContext, chain);
 		}
@@ -74,11 +70,14 @@ public class KatharsisModuleConfig {
 	
 	public static class MyDFilterModule1 extends AbstractDocumentFilter {
 
+		@SuppressWarnings("unused")
 		private DocumentFilterContext filterRequestContext;
+		@SuppressWarnings("unused")
 		private DocumentFilterChain chain;
 		
 		@Override
 		public Response filter(DocumentFilterContext filterRequestContext, DocumentFilterChain chain) {
+			@SuppressWarnings("unused")
 			String a = "6";
 			return super.filter(filterRequestContext, chain);
 		}

@@ -176,6 +176,12 @@ public abstract class DtoRepositoryBase<T extends Dto, L extends ResourceListBas
 		return convertToResourceList(page.getContent(), page.getTotalResourceCount(), scenario);
 	}
 	
+	protected L convertToResourceList(E entity, Scenario scenario) {
+		List<E> l = new ArrayList<>();
+		l.add(entity);
+		return convertToResourceList(l, 1, scenario);
+	}
+	
 	
 	public F getRepository() {
 		return repository;

@@ -57,6 +57,7 @@ public class ClassScanner {
 		return ClassUtils.convertClassNameToResourcePath(SystemPropertyUtils.resolvePlaceholders(basePackage));
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static boolean isCandidate(MetadataReader metadataReader, Class annoCls) throws ClassNotFoundException {
 		try {
 			Class<?> c = Class.forName(metadataReader.getClassMetadata().getClassName());

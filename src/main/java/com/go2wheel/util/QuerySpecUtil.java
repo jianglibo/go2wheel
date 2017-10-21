@@ -63,7 +63,7 @@ public class QuerySpecUtil {
 		return ids;
 	}
 	
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused", "unchecked" })
 	public static RelationQuery findRelationQuery(QuerySpec spec) {
 		List<Long> ids = new ArrayList<>();
 		Optional<FilterSpec> fs =  spec.getFilters().stream().filter(f -> f.getOperator() == FilterOperator.EQ && f.getAttributePath().size() > 1 && "id".equals(f.getAttributePath().get(f.getAttributePath().size() - 1))).findAny();

@@ -55,8 +55,10 @@ import com.go2wheel.vo.RoleNames;
 @Priority(20)
 public class PostPostFilter implements Filter {
 
+	@SuppressWarnings("unused")
 	private static Logger logger = LoggerFactory.getLogger(PostPostFilter.class);
 	
+	@SuppressWarnings("unused")
 	private static String keyName = "uploadSecret";
 	
 	@Autowired

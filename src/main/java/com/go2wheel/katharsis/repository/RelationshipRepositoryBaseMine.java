@@ -71,14 +71,14 @@ public class RelationshipRepositoryBaseMine<T, D> extends RelationshipRepository
 		}
 
 		for (D result : results) {
-			handleTarget(bulkResult, result, sourceIdSet, oppositeName, sourceInformation);
+			handleTargetAllowOverride(bulkResult, result, sourceIdSet, oppositeName, sourceInformation);
 		}
 		return bulkResult;
 	}
 	
 	
 	@SuppressWarnings("unchecked")
-	private void handleTarget(MultivaluedMap<Long, D> bulkResult, D result, Set<Long> sourceIdSet, String oppositeName, ResourceInformation sourceInformation) {
+	protected void handleTargetAllowOverride(MultivaluedMap<Long, D> bulkResult, D result, Set<Long> sourceIdSet, String oppositeName, ResourceInformation sourceInformation) {
 		Object property = PropertyUtils.getProperty(result, oppositeName);
 		if (property == null) {
 			throw new IllegalStateException("field " + oppositeName + " is null for " + result + ", make sure to properly implement relationship inclusions");
@@ -114,11 +114,13 @@ public class RelationshipRepositoryBaseMine<T, D> extends RelationshipRepository
 
 	
 	
+	@SuppressWarnings("unchecked")
 	private ResourceRepositoryAdapter<D, Long> getTargetAdapter() {
 		RegistryEntry entry = resourceRegistry.findEntry(getTargetResourceClass());
 		return entry.getResourceRepository(null);
 	}
 
+	@SuppressWarnings({ "unused", "unchecked" })
 	private ResourceRepositoryAdapter<T, Long> getSourceAdapter() {
 		RegistryEntry entry = resourceRegistry.findEntry(getSourceResourceClass());
 		return entry.getResourceRepository(null);

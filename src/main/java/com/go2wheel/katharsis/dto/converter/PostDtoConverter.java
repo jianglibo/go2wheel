@@ -16,6 +16,7 @@ public class PostDtoConverter implements DtoConverter<Post, PostDto> {
 	@Autowired
 	private UserDtoConverter userConverter;
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private MediumFacadeRepository mediumRepo;
 	

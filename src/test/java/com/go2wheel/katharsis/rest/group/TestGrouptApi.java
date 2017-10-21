@@ -33,7 +33,7 @@ public class TestGrouptApi  extends KatharsisBase {
 	@Test
 	public void tAdmionAddOne() throws JsonParseException, JsonMappingException, IOException {
 		
-		JsonApiPostBodyWrapper<?> body = JsonApiPostBodyWrapperBuilder.getObjectRelationBuilder(getResourceName())
+		JsonApiPostBodyWrapper<?> body = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName())
 				.addAttributePair("name", "agroup")
 				.addAttributePair("description", "agroupdescription")
 				.addAttributePair("openToAll", true)

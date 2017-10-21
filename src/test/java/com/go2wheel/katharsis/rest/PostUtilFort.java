@@ -23,7 +23,7 @@ public class PostUtilFort {
 
 	public String createPostPostBody(BootGroup group, BootUser...users) throws JsonProcessingException {
 		Long[] ids = Stream.of(users).map(u -> u.getId()).toArray(size -> new Long[size]);
-		ListWapperBuilder lb = JsonApiPostBodyWrapperBuilder.getListRelationBuilder(JsonApiResourceNames.POST)
+		ListWapperBuilder lb = JsonApiPostBodyWrapperBuilder.getListBuilder(JsonApiResourceNames.POST)
 				.addAttributePair("title", "title")
 				.addAttributePair("content", "content")
 				.addRelation("sharedUsers", JsonApiResourceNames.BOOT_USER, ids);

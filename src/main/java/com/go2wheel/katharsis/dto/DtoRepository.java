@@ -11,6 +11,11 @@ public interface DtoRepository {
 	default Pageable convertToPageable(QuerySpec querySpec) {
 		Pageable pg = new AbstractPageRequest(0, 0) {
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public Sort getSort() {
 				// TODO Auto-generated method stub

@@ -18,18 +18,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.go2wheel.config.ApplicationConfig;
 import com.go2wheel.config.KatharsisModuleConfig;
 import com.go2wheel.katharsis.dto.LoginAttemptDto;
+import com.go2wheel.katharsis.dto.ManufacturerDto;
 import com.go2wheel.katharsis.dto.RoleDto;
+import com.go2wheel.katharsis.dto.TagDto;
 import com.go2wheel.katharsis.dto.UserDto;
 
 import io.katharsis.client.KatharsisClient;
@@ -48,7 +43,8 @@ import io.katharsis.spring.boot.v3.KatharsisConfigV3;
 @ComponentScan(basePackages={"com.go2wheel"})
 public class Application {
 
-    public static void main(String[] args) {
+    @SuppressWarnings("unused")
+	public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
     }
 
@@ -68,6 +64,8 @@ public class Application {
     	// load resource
     	kc.getRepositoryForType(UserDto.class);
     	kc.getRepositoryForType(RoleDto.class);
+    	kc.getRepositoryForType(TagDto.class);
+    	kc.getRepositoryForType(ManufacturerDto.class);
     	kc.getRepositoryForType(LoginAttemptDto.class);
     	return kc;
     }

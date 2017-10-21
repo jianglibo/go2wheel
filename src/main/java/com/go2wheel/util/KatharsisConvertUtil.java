@@ -20,6 +20,7 @@ public class KatharsisConvertUtil {
 	@Autowired
 	private KatharsisBoot kboot;
 
+	@SuppressWarnings("unchecked")
 	public <T> List<T> getList(String responseBody, Class<T> targetClass) throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper objectMapper = kboot.getObjectMapper();
 		Document document = objectMapper.readValue(responseBody, Document.class);
@@ -33,6 +34,7 @@ public class KatharsisConvertUtil {
 		return getOne(document, targetClass);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T> T getOne(Document document, Class<T> targetClass) throws JsonParseException, JsonMappingException, IOException {
 		ClientDocumentMapper documentMapper = new ClientDocumentMapper(kboot.getModuleRegistry(), kboot.getObjectMapper(), null);
 		return (T) documentMapper.fromDocument(document, false);

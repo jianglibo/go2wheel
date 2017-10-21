@@ -11,6 +11,7 @@ public class TestMyVerify extends WxBase {
 	
 //	signature: daa35cebd01b112931e7a6a1b960a9ad5383b6f6timestamp: 1497313081nonce: 2797966136echostr: 6347584983506354171
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void t() throws AesException {
 		String verifyMsgSig = "daa35cebd01b112931e7a6a1b960a9ad5383b6f6";

@@ -1,12 +1,11 @@
 ﻿/**
- * 2016 jianglibo@gmail.com
+ * 2017 jianglibo@gmail.com
  *
  */
 package com.go2wheel.ylbx;
 
 import java.io.IOException;
 
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.fluent.Executor;

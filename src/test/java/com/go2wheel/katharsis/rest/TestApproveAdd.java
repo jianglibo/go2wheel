@@ -47,10 +47,10 @@ public class TestApproveAdd extends KatharsisBase {
 		BootGroup bg = new BootGroup("agroup");
 		bg = groupRepo.save(bg);
 		
-		JsonApiPostBodyWrapper<CreateOneBody> jpw = JsonApiPostBodyWrapperBuilder.getObjectRelationBuilder(getResourceName()).addAttributePair("targetType", BootGroup.class.getName())
+		JsonApiPostBodyWrapper<CreateOneBody> jpw = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName()).addAttributePair("targetType", BootGroup.class.getName())
 				.addAttributePair("targetId", bg.getId())
-				.addRelation("requester", JsonApiResourceNames.BOOT_USER, requester.getId())
-				.addRelation("receiver", JsonApiResourceNames.BOOT_USER, receiver.getId()).build();
+				.addOneRelation("requester", JsonApiResourceNames.BOOT_USER, requester.getId())
+				.addOneRelation("receiver", JsonApiResourceNames.BOOT_USER, receiver.getId()).build();
 		
 		String s = indentOm.writeValueAsString(jpw);
 		response = postItemWithContent(s, jwt1);

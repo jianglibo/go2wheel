@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import com.go2wheel.katharsis.dto.UserDto;
 import com.go2wheel.domain.BootGroup;
-import com.go2wheel.domain.GroupUserRelation;
 import com.go2wheel.facade.BootGroupFacadeRepository;
 import com.go2wheel.facade.BootUserFacadeRepository;
 import com.go2wheel.facade.GroupUserRelationFacadeRepository;

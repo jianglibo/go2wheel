@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import com.go2wheel.domain.GroupUserRelation;
 import com.go2wheel.katharsis.dto.GroupUserRelationDto;
-import com.go2wheel.katharsis.dto.converter.DtoConverter.Scenario;
 
 @Component
 public class GroupUserRelationDtoConverter implements DtoConverter<GroupUserRelation, GroupUserRelationDto> {

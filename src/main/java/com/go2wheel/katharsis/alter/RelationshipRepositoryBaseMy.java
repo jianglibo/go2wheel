@@ -114,11 +114,13 @@ public class RelationshipRepositoryBaseMy<T, D> extends RelationshipRepositoryBa
 
 	
 	
+	@SuppressWarnings("unchecked")
 	private ResourceRepositoryAdapter<D, Long> getTargetAdapter() {
 		RegistryEntry entry = resourceRegistry.findEntry(getTargetResourceClass());
 		return entry.getResourceRepository(null);
 	}
 
+	@SuppressWarnings({ "unused", "unchecked" })
 	private ResourceRepositoryAdapter<T, Long> getSourceAdapter() {
 		RegistryEntry entry = resourceRegistry.findEntry(getSourceResourceClass());
 		return entry.getResourceRepository(null);

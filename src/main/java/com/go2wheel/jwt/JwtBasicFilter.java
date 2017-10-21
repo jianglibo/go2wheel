@@ -38,6 +38,7 @@ import com.go2wheel.vo.BootUserPrincipal;
 @Priority(18)
 public class JwtBasicFilter implements Filter {
 
+	@SuppressWarnings("unused")
 	private static Logger logger = LoggerFactory.getLogger(JwtBasicFilter.class);
 	
 //	public static Pattern pathPattern;

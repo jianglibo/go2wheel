@@ -1,25 +1,16 @@
 ﻿package com.go2wheel.katharsis.dto.converter;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.go2wheel.domain.FollowRelation;
 import com.go2wheel.katharsis.dto.FollowRelationDto;
-import com.go2wheel.katharsis.dto.converter.DtoConverter.Scenario;
 
 @Component
 public class FollowRelationDtoConverter implements DtoConverter<FollowRelation, FollowRelationDto> {
 
 	@Autowired
 	private UserDtoConverter userConverter;
-	
-//	@Override
-//	public FollowRelation dto2Entity(FollowRelationDto dto) {
-//		FollowRelation entity = new FollowRelation();
-//		BeanUtils.copyProperties(dto, entity);
-//		return entity;
-//	}
 
 	@Override
 	public FollowRelationDto entity2Dto(FollowRelation entity, Scenario scenario) {

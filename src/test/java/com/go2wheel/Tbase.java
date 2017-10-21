@@ -20,9 +20,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.go2wheel.config.ApplicationConfig;
 import com.go2wheel.repository.BootGroupRepository;
 import com.go2wheel.repository.BootUserRepository;
+import com.go2wheel.repository.ManufacturerRepository;
 import com.go2wheel.repository.MediumRepository;
+import com.go2wheel.repository.MtSeriesRepository;
 import com.go2wheel.repository.PostRepository;
 import com.go2wheel.repository.RoleRepository;
+import com.go2wheel.repository.TagRepository;
 import com.go2wheel.util.BootUserFactory;
 
 /**
@@ -59,14 +62,23 @@ public abstract class Tbase extends M3958TsBase {
     @Autowired
     protected PostRepository postRepo;
     
+    @Autowired
+    protected TagRepository tagRepo;
+    
 	@Autowired
 	protected BootGroupRepository groupRepo;
+	
+	@Autowired
+	protected MtSeriesRepository mtSeriesRepo;
 
     @Autowired
     protected RoleRepository roleRepo;
     
     @Autowired
     protected ObjectMapper objectMapper;
+    
+    @Autowired
+    protected ManufacturerRepository manufacturerRepo;
     
     @Autowired
     protected Tutil tutil;

@@ -173,6 +173,7 @@ public class HadoopFs implements InitializingBean {
 			return cmdItems.toArray(new String[]{});
 		}
 		
+		@SuppressWarnings("unused")
 		public List<String> buildList() {
 			return cmdItems;
 		}

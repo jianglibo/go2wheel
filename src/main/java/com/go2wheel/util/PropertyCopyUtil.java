@@ -26,19 +26,7 @@ public class PropertyCopyUtil {
 			BeanUtils.copyProperties(dto, entity, excludes);
 		}
 	}
-
-	private static Set<String> getClassPropertyNames(Class<?> clazz) {
-		PropertyDescriptor[] pds = BeanUtils.getPropertyDescriptors(clazz);		
-		return Stream.of(pds).map(pd -> pd.getName()).collect(Collectors.toSet());
-	}
 	
-	public static <E extends BaseEntity, D extends Dto> void copyPropertyOnly(E entity, D dto, String...fns) {
-			Set<String> ppnames = cmap.computeIfAbsent(entity.getClass(), clazz -> getClassPropertyNames(clazz));
-			Set<String> ss = new HashSet<>(Arrays.asList(fns));
-			String[] excludes = ppnames.stream().filter(s -> !ss.contains(s)).toArray(size -> new String[size]);
-			BeanUtils.copyProperties(dto, entity, excludes);
-	}
-
 	public static <E extends BaseEntity, D extends Dto> void copyPropertyWhenCreate(E entity, D dto) {
 		Set<String> ppnames = cmap.computeIfAbsent(entity.getClass(), clazz -> getClassPropertyNames(clazz));
 		Set<String> ss = new HashSet<>(Arrays.asList(entity.propertiesOnCreating()));
@@ -46,4 +34,9 @@ public class PropertyCopyUtil {
 		BeanUtils.copyProperties(dto, entity, excludes);
 	}
 	
+	private static Set<String> getClassPropertyNames(Class<?> clazz) {
+		PropertyDescriptor[] pds = BeanUtils.getPropertyDescriptors(clazz);		
+		return Stream.of(pds).map(pd -> pd.getName()).collect(Collectors.toSet());
+	}
+
 }

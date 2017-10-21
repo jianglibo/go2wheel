@@ -10,6 +10,7 @@ import com.go2wheel.katharsis.dto.ApproveDto;
 @Component
 public class ApproveDtoConverter implements DtoConverter<Approve, ApproveDto> {
 
+	@SuppressWarnings("unused")
 	@Autowired
 	private UserDtoConverter userConverter;
 	

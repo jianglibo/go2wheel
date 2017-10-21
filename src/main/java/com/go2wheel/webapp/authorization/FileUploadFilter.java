@@ -47,6 +47,7 @@ import com.go2wheel.vo.RoleNames;
 @Priority(20)
 public class FileUploadFilter implements Filter {
 
+	@SuppressWarnings("unused")
 	private static Logger logger = LoggerFactory.getLogger(FileUploadFilter.class);
 	
 	private static String keyName = "uploadSecret";
@@ -74,6 +75,7 @@ public class FileUploadFilter implements Filter {
 					// Parse the request
 					try {
 						FileItemIterator iter = upload.getItemIterator(request);
+						@SuppressWarnings("unused")
 						String keyValue = null;
 						List<Medium> media = new ArrayList<>();
 						while (iter.hasNext()) {

@@ -59,8 +59,8 @@ public class BootGroupFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<Boot
 	@Override
 	@PreAuthorize(PreAuthorizeExpression.IS_FULLY_AUTHENTICATED)
 	public BootGroup newByDto(GroupDto dto) {
-		BootGroup entity = new BootGroup(dto.getName());
-		PropertyCopyUtil.copyPropertyOnly(entity, dto, entity.propertiesOnCreating());
+		BootGroup entity = new BootGroup();
+		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
 		entity.setCreator(userRepo.findOne(SecurityUtil.getLoginUserId(), true));
 		return entity;
 	}

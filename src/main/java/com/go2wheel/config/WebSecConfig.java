@@ -35,7 +35,8 @@ import com.go2wheel.vo.RoleNames;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecConfig extends WebSecurityConfigurerAdapter {
 
-    private static Logger logger = LoggerFactory.getLogger(WebSecConfig.class);
+    @SuppressWarnings("unused")
+	private static Logger logger = LoggerFactory.getLogger(WebSecConfig.class);
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -46,7 +47,8 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private ApplicationConfig applicationConfig;
     
-    @Autowired
+    @SuppressWarnings("unused")
+	@Autowired
     private ObjectMapper objectMapper;
     
     @Autowired
