@@ -51,11 +51,4 @@ public class GroupUserRelation extends BaseEntity {
 		this.bootUser = bootUser;
 	}
 
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 }

@@ -51,10 +51,4 @@ public class PostShare extends BaseEntity {
 	public void setBootUser(BootUser bootUser) {
 		this.bootUser = bootUser;
 	}
-
-	@Override
-	public String[] propertiesOnCreating() {
-		return null;
-	}
-	
 }

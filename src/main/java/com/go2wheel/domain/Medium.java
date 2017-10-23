@@ -77,9 +77,4 @@ public class Medium extends BaseEntity {
 	public void setCreator(BootUser creator) {
 		this.creator = creator;
 	}
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

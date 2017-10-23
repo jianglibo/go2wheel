@@ -22,7 +22,7 @@ public abstract class DtoConverterBase<E extends BaseEntity, D extends DtoBase> 
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		BeanUtils.copyProperties(entity, d, dtoEntityMapper.getEntityToDtoIgnors().get(entity.getClass()));
+		BeanUtils.copyProperties(entity, d, dtoEntityMapper.getEntityToDtoIgnores().get(entity.getClass()));
 		D newd = afterPropertyCopy(entity, d, scenario);
 		if (newd == null) {
 			newd = d;

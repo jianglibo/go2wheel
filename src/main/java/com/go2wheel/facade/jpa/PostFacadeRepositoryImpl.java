@@ -35,7 +35,6 @@ import com.go2wheel.facade.UnreadFacadeRepository;
 import com.go2wheel.katharsis.dto.MediumDto;
 import com.go2wheel.katharsis.dto.PostDto;
 import com.go2wheel.repository.PostRepository;
-import com.go2wheel.util.PropertyCopyUtil;
 import com.go2wheel.util.SecurityUtil;
 
 /**
@@ -127,7 +126,7 @@ public class PostFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<Post,Post
 	@PreAuthorize(PreAuthorizeExpression.IS_FULLY_AUTHENTICATED)
 	public Post newByDto(PostDto dto) {
 		Post entity = new Post();
-		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
+		getPropertyCopyUtil().copyPropertyWhenCreate(entity, dto);
 		entity.setCreator(userRepo.findOne(SecurityUtil.getLoginUserId(), true));
 		entity = getRepository().save(entity);
 		List<Medium> media = new ArrayList<>();

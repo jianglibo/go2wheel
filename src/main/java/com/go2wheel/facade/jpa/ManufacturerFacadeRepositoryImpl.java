@@ -10,7 +10,6 @@ import com.go2wheel.facade.PageFacade;
 import com.go2wheel.facade.ManufacturerFacadeRepository;
 import com.go2wheel.katharsis.dto.ManufacturerDto;
 import com.go2wheel.repository.ManufacturerRepository;
-import com.go2wheel.util.PropertyCopyUtil;
 
 /**
  * @author jianglibo@gmail.com
@@ -32,7 +31,7 @@ public class ManufacturerFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<M
 	@Override
 	public Manufacturer newByDto(ManufacturerDto dto) {
 		Manufacturer entity = new Manufacturer();
-		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
+		getPropertyCopyUtil().copyPropertyWhenCreate(entity, dto);
 		return entity;
 	}
 

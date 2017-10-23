@@ -12,14 +12,12 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.go2wheel.annotation.ToDtoIgnore;
+import com.go2wheel.annotation.EntityToDtoIgnore;
 
 @Entity
 @Table(name = "mtseries")
 public class MtSeries extends BaseEntity {
 	
-	private static String[] initProperties = new String[] {"name", "description"};
-
 	/**
 	 * 
 	 */
@@ -34,12 +32,12 @@ public class MtSeries extends BaseEntity {
 	private String description;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="mtSeries")
-	@ToDtoIgnore
+	@EntityToDtoIgnore
 	private List<MtModel> models = new ArrayList<>();
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull
-	@ToDtoIgnore
+	@EntityToDtoIgnore
 	private Manufacturer manufacturer;
 
 	public String getName() {
@@ -56,11 +54,6 @@ public class MtSeries extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Override
-	public String[] propertiesOnCreating() {
-		return MtSeries.initProperties;
 	}
 
 	public List<MtModel> getModels() {

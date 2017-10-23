@@ -16,7 +16,6 @@ import javax.persistence.Version;
 
 
 @MappedSuperclass
-//@EntityListeners(value = {EntityChangeListener.class})
 public abstract class BaseEntity implements Serializable {
 
     /**
@@ -81,6 +80,5 @@ public abstract class BaseEntity implements Serializable {
     public void setVersion(int version) {
         this.version = version;
     }
-    
-    public abstract String[] propertiesOnCreating();
+
 }

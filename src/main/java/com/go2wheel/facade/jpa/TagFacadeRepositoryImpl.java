@@ -10,7 +10,6 @@ import com.go2wheel.facade.PageFacade;
 import com.go2wheel.facade.TagFacadeRepository;
 import com.go2wheel.katharsis.dto.TagDto;
 import com.go2wheel.repository.TagRepository;
-import com.go2wheel.util.PropertyCopyUtil;
 
 /**
  * @author jianglibo@gmail.com
@@ -32,7 +31,7 @@ public class TagFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<Tag,TagDto
 	@Override
 	public Tag newByDto(TagDto dto) {
 		Tag entity = new Tag();
-		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
+		getPropertyCopyUtil().copyPropertyWhenCreate(entity, dto);
 		return entity;
 	}
 

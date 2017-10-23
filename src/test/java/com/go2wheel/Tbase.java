@@ -22,6 +22,7 @@ import com.go2wheel.repository.BootGroupRepository;
 import com.go2wheel.repository.BootUserRepository;
 import com.go2wheel.repository.ManufacturerRepository;
 import com.go2wheel.repository.MediumRepository;
+import com.go2wheel.repository.MtModelRepository;
 import com.go2wheel.repository.MtSeriesRepository;
 import com.go2wheel.repository.PostRepository;
 import com.go2wheel.repository.RoleRepository;
@@ -70,6 +71,10 @@ public abstract class Tbase extends M3958TsBase {
 	
 	@Autowired
 	protected MtSeriesRepository mtSeriesRepo;
+	
+	@Autowired
+	protected MtModelRepository mtModelRepo;
+
 
     @Autowired
     protected RoleRepository roleRepo;

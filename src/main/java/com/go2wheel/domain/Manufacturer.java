@@ -14,14 +14,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.go2wheel.annotation.ToDtoIgnore;
+import com.go2wheel.annotation.EntityToDtoIgnore;
 
 @Entity
 @Table(name = "manufactory")
 public class Manufacturer extends BaseEntity {
 	
-	private static String[] initProperties = new String[] {"name", "websites", "founder", "foundTime", "nationality", "logo", "legend"};
-
 	/**
 	 * 
 	 */
@@ -45,7 +43,7 @@ public class Manufacturer extends BaseEntity {
 	private String legend;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="manufacturer")
-	@ToDtoIgnore
+	@EntityToDtoIgnore
 	private List<MtSeries> mtSerieses = new ArrayList<>();
 
 	public String getName() {
@@ -94,11 +92,6 @@ public class Manufacturer extends BaseEntity {
 
 	public void setLegend(String legend) {
 		this.legend = legend;
-	}
-
-	@Override
-	public String[] propertiesOnCreating() {
-		return Manufacturer.initProperties;
 	}
 
 	public List<MtSeries> getMtSerieses() {

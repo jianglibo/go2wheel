@@ -22,11 +22,12 @@ public class MtModel extends BaseEntity {
 	
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
 	@NotNull
+	@ManyToOne(fetch = FetchType.EAGER)
 	private MtSeries mtSeries;
 	
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private Market market = Market.ALL;
 	
 	private String description;
@@ -362,11 +363,6 @@ public class MtModel extends BaseEntity {
 		this.description = description;
 	}
 
-	@Override
-	public String[] propertiesOnCreating() {
-		return null;
-	}
-
 	public Market getMarket() {
 		return market;
 	}
@@ -382,6 +378,5 @@ public class MtModel extends BaseEntity {
 	public void setMtSeries(MtSeries mtSeries) {
 		this.mtSeries = mtSeries;
 	}
-
 	
 }

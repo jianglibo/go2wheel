@@ -1,9 +1,5 @@
 package com.go2wheel.katharsis.dto;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import com.go2wheel.annotation.DtoToEntity;
@@ -11,9 +7,11 @@ import com.go2wheel.config.JsonApiResourceNames;
 import com.go2wheel.constant.EnginType;
 import com.go2wheel.constant.Market;
 import com.go2wheel.domain.MtModel;
-import com.go2wheel.domain.MtSeries;
 
+import io.katharsis.resource.annotations.JsonApiRelation;
 import io.katharsis.resource.annotations.JsonApiResource;
+import io.katharsis.resource.annotations.LookupIncludeBehavior;
+import io.katharsis.resource.annotations.SerializeType;
 
 @JsonApiResource(type = JsonApiResourceNames.MT_MODEL)
 @DtoToEntity(entityClass=MtModel.class)
@@ -21,11 +19,10 @@ public class MtModelDto extends DtoBase {
 	
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
 	@NotNull
-	private MtSeries mtSeries;
+	@JsonApiRelation(lookUp=LookupIncludeBehavior.AUTOMATICALLY_WHEN_NULL, serialize=SerializeType.LAZY, opposite="models")
+	private MtSeriesDto mtSeries;
 	
-	@Enumerated(EnumType.STRING)
 	private Market market = Market.ALL;
 	
 	private String description;
@@ -49,23 +46,18 @@ public class MtModelDto extends DtoBase {
 	
 	private String finalDrive;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
 	private EnginType.FinalDriveType finalDriveType;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
 	private EnginType.CoolType coolType;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
 	private EnginType.CylinderHead cylinderHead;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
 	private EnginType.EnginePosition enginPosition;
 	
-	@Enumerated(EnumType.STRING)
 	@NotNull
 	private EnginType.IgnitionType ignitionType;
 	
@@ -106,12 +98,12 @@ public class MtModelDto extends DtoBase {
 	}
 
 
-	public MtSeries getMtSeries() {
+	public MtSeriesDto getMtSeries() {
 		return mtSeries;
 	}
 
 
-	public void setMtSeries(MtSeries mtSeries) {
+	public void setMtSeries(MtSeriesDto mtSeries) {
 		this.mtSeries = mtSeries;
 	}
 

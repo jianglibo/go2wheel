@@ -238,7 +238,10 @@ public abstract class KatharsisBase extends Tbase {
 	public void deleteAllMtSerieses() {
 		mtSeriesRepo.deleteAll();
 	}
-
+	
+	public void deleteAllMtModels() {
+		mtModelRepo.deleteAll();
+	}
 	
 	public void deleteAllMedia() {
 		mediumRepo.deleteAll();

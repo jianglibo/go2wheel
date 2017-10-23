@@ -70,8 +70,4 @@ public class Role extends BaseEntity implements GrantedAuthority {
     	return "ROLE: " + getName();
     }
 
-	@Override
-	public String[] propertiesOnCreating() {
-		return new String[]{"name"};
-	}
 }

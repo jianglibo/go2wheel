@@ -10,7 +10,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import com.go2wheel.annotation.DtoToEntity;
-import com.go2wheel.annotation.ToDtoIgnore;
+import com.go2wheel.annotation.EntityToDtoIgnore;
 import com.go2wheel.domain.BaseEntity;
 import com.go2wheel.katharsis.dto.Dto;
 import com.go2wheel.util.ClassScanner;
@@ -22,7 +22,9 @@ public class DtoEntityMapper implements InitializingBean {
 	
 	private final Map<Class<? extends BaseEntity>, Class<? extends Dto>>  entityToDto = new HashMap<>();
 	
-	private final Map<Class<? extends BaseEntity>, String[]>  entityToDtoIgnors = new HashMap<>();
+	private final Map<Class<? extends BaseEntity>, String[]>  entityToDtoIgnores = new HashMap<>();
+	
+	private final Map<Class<? extends BaseEntity>, String[]>  dtoToEntityIgnores = new HashMap<>();
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -35,8 +37,8 @@ public class DtoEntityMapper implements InitializingBean {
 			entityClass = de.entityClass();
 			
 			Field[] fields = entityClass.getDeclaredFields();
-			String[] toDtoIgnores = Stream.of(fields).map(f -> {
-				ToDtoIgnore tdi = f.getAnnotation(ToDtoIgnore.class);
+			String[] entityToDtoIgnoreNames = Stream.of(fields).map(f -> {
+				EntityToDtoIgnore tdi = f.getAnnotation(EntityToDtoIgnore.class);
 				if (tdi != null) {
 					return tdi.value().isEmpty() ? f.getName() : tdi.value();
 				} else {
@@ -44,7 +46,19 @@ public class DtoEntityMapper implements InitializingBean {
 				}
 			}).filter(s -> s != null).toArray(length -> new String[length]);
 			
-			entityToDtoIgnors.put(entityClass, toDtoIgnores);
+			entityToDtoIgnores.put(entityClass, entityToDtoIgnoreNames);
+			
+			String[] dtoToEntityIgnoreNames = Stream.of(fields).map(f -> {
+				EntityToDtoIgnore tdi = f.getAnnotation(EntityToDtoIgnore.class);
+				if (tdi != null) {
+					return tdi.value().isEmpty() ? f.getName() : tdi.value();
+				} else {
+					return null;
+				}
+			}).filter(s -> s != null).toArray(length -> new String[length]);
+			
+			dtoToEntityIgnores.put(entityClass, dtoToEntityIgnoreNames);
+			
 			@SuppressWarnings("unchecked")
 			Class<? extends Dto> dtotrue = (Class<? extends Dto>) dtoClass;
 			dtoToEntity.put(dtotrue, entityClass);
@@ -60,8 +74,14 @@ public class DtoEntityMapper implements InitializingBean {
 		return entityToDto;
 	}
 
-	public Map<Class<? extends BaseEntity>, String[]> getEntityToDtoIgnors() {
-		return entityToDtoIgnors;
+	public Map<Class<? extends BaseEntity>, String[]> getEntityToDtoIgnores() {
+		return entityToDtoIgnores;
 	}
+
+	public Map<Class<? extends BaseEntity>, String[]> getDtoToEntityIgnores() {
+		return dtoToEntityIgnores;
+	}
+	
+	
 	
 }

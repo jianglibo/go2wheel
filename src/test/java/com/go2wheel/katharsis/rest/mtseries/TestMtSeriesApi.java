@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest.manufacturer;
+﻿package com.go2wheel.katharsis.rest.mtseries;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -18,37 +18,39 @@ import com.go2wheel.JsonApiPostBodyWrapperBuilder;
 import com.go2wheel.KatharsisBase;
 import com.go2wheel.config.JsonApiResourceNames;
 import com.go2wheel.domain.Manufacturer;
+import com.go2wheel.domain.MtModel;
 import com.go2wheel.domain.MtSeries;
-import com.go2wheel.katharsis.dto.ManufacturerDto;
+import com.go2wheel.katharsis.dto.MtModelDto;
 import com.go2wheel.katharsis.dto.MtSeriesDto;
-import com.go2wheel.katharsis.rest.mtseries.MtSeriesTUtil;
+import com.go2wheel.katharsis.rest.manufacturer.ManufacturerTUtil;
+import com.go2wheel.katharsis.rest.mtmodel.MtModelTUtil;
 import com.go2wheel.util.MyJsonApiUrlBuilder;
 
-public class TestMenufacturerApi  extends KatharsisBase {
+public class TestMtSeriesApi  extends KatharsisBase {
 	
 	@Autowired
 	private ManufacturerTUtil mftu;
 	
 	@Autowired
-	private MtSeriesTUtil mtSeriesUtil;
+	private MtSeriesTUtil msUtil;
+	
+	@Autowired
+	private MtModelTUtil mmUtil;
 	
 	@Before
 	public void b() throws JsonParseException, JsonMappingException, IOException {
 		initTestUser();
-		deleteAllManufacturers();
+		deleteAllMtSerieses();
 	}
 	
 	@Test
 	public void tAddOneByRest() throws JsonParseException, JsonMappingException, IOException {
-
+//		private static String[] initProperties = new String[] {"name", "description"};
+		Manufacturer mf = mftu.createOne();
 		JsonApiPostBodyWrapper<CreateOneBody> jbw = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName())
-				.addAttributePair("name", "kawasaki")
-				.addAttributeMapPair("websites", "zh", "http://www.kawasaki-motors.cn")
-				.addAttributeMapPair("websites", "en", "https://www.kawasaki.com")
-				.addAttributePair("founder", "")
-				.addAttributePair("nationality", "Japan")
-				.addAttributePair("logo", "abc/aa.gif")
-				.addAttributePair("legend", "hello. world.")
+				.addAttributePair("name", "versys")
+				.addAttributePair("description", "very good.")
+				.addOneRelation("manufacturer", JsonApiResourceNames.MANUFACTURER, mf.getId())
 				.build();
 		
 		String s = objectMapper.writeValueAsString(jbw);
@@ -57,47 +59,46 @@ public class TestMenufacturerApi  extends KatharsisBase {
 		response = postItemWithContent(s, jwt1);
 		writeDto(response, getResourceName(), ActionNames.POST_RESULT);
 		
-		ManufacturerDto newPost = getOne(response.getBody(), ManufacturerDto.class);
-		assertThat(newPost.getName(), equalTo("kawasaki"));
+		MtSeriesDto newPost = getOne(response.getBody(), MtSeriesDto.class);
+		assertThat(newPost.getName(), equalTo("versys"));
 		
-		Manufacturer p = manufacturerRepo.findOne(newPost.getId());
+		MtSeries p = mtSeriesRepo.findOne(newPost.getId());
 		
-		assertThat(p.getName(), equalTo("kawasaki"));
+		assertThat(p.getName(), equalTo("versys"));
 		
 		MyJsonApiUrlBuilder b = new MyJsonApiUrlBuilder("?");
-		b.filters("name", "kawasaki");
+		b.filters("name", "versys");
 		String url = getBaseURI() +  b.build();
 		
 		response = requestForBody(null, url);
 		writeDto(response, getResourceName(), ActionNames.GET_LIST);
-		List<ManufacturerDto> newPosts = getList(response, ManufacturerDto.class);
+		List<MtSeriesDto> newPosts = getList(response, MtSeriesDto.class);
 		assertThat(newPosts.size(), equalTo(1));
 	}
 	
-	
 	@Test
-	public void testMtSeriesRelations() throws IOException {
-		Manufacturer mf = mftu.createOne();
+	public void testMtModelsRelations() throws IOException {
+		MtSeries ms = msUtil.createOne("versys");
 		@SuppressWarnings("unused")
-		List<MtSeries> mss = mtSeriesUtil.createMany(mf, 3);
-		
-		String url = buildRelationUrl(mf, "mtSerieses");
+		List<MtModel> mms = mmUtil.createMany(ms, 3);
+		String url = buildRelationUrl(ms, "models");
 		response = requestForBody(null, url);
-		writeDto(response, JsonApiResourceNames.MANUFACTURER, "relation-mtSerieses");
-		List<MtSeriesDto> mtSeries = getList(response, MtSeriesDto.class);
-		assertThat(mtSeries.size(), equalTo(3));
+		writeDto(response, getResourceName(), "relation-models");
+		List<MtModelDto> mtmodels = getList(response, MtModelDto.class);
+		assertThat(mtmodels.size(), equalTo(3));
 		
 		
-		url = buildRelationUrl(mf, "mtSerieses") + new MyJsonApiUrlBuilder("?").page(2, 0).build();
+		url = buildRelationUrl(ms, "models") + new MyJsonApiUrlBuilder("?").page(2, 0).build();
 		response = requestForBody(null, url);
-		writeDto(response, JsonApiResourceNames.MANUFACTURER, "relation-mtSerieses");
-		mtSeries = getList(response, MtSeriesDto.class);
-		assertThat(mtSeries.size(), equalTo(2));
+		writeDto(response, getResourceName(), "relation-mtSerieses");
+		mtmodels = getList(response, MtModelDto.class);
+		assertThat(mtmodels.size(), equalTo(2));
 	}
+
 
 
 	@Override
 	protected String getResourceName() {
-		return JsonApiResourceNames.MANUFACTURER;
+		return JsonApiResourceNames.MT_SERIES;
 	}
 }

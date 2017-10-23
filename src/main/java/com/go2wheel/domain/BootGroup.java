@@ -94,8 +94,4 @@ public class BootGroup extends BaseEntity {
 		this.openToAll = openToAll;
 	}
 
-	@Override
-	public String[] propertiesOnCreating() {
-		return new String[]{"name", "description", "openToAll", "thumbUrl"};
-	}
 }

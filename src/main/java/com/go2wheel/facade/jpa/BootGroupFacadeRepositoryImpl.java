@@ -11,7 +11,6 @@ import com.go2wheel.facade.BootGroupFacadeRepository;
 import com.go2wheel.facade.BootUserFacadeRepository;
 import com.go2wheel.katharsis.dto.GroupDto;
 import com.go2wheel.repository.BootGroupRepository;
-import com.go2wheel.util.PropertyCopyUtil;
 import com.go2wheel.util.SecurityUtil;
 
 /**
@@ -60,7 +59,7 @@ public class BootGroupFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<Boot
 	@PreAuthorize(PreAuthorizeExpression.IS_FULLY_AUTHENTICATED)
 	public BootGroup newByDto(GroupDto dto) {
 		BootGroup entity = new BootGroup();
-		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
+		getPropertyCopyUtil().copyPropertyWhenCreate(entity, dto);
 		entity.setCreator(userRepo.findOne(SecurityUtil.getLoginUserId(), true));
 		return entity;
 	}

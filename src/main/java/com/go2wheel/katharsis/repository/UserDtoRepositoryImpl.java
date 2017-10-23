@@ -30,7 +30,6 @@ import com.go2wheel.katharsis.dto.UserDto.OnCreateGroup;
 import com.go2wheel.katharsis.dto.converter.DtoConverter.Scenario;
 import com.go2wheel.katharsis.dto.converter.UserDtoConverter;
 import com.go2wheel.katharsis.repository.UserDtoRepository.UserDtoList;
-import com.go2wheel.util.PropertyCopyUtil;
 import com.go2wheel.util.QuerySpecUtil;
 import com.go2wheel.util.QuerySpecUtil.RelationQuery;
 import com.go2wheel.util.UuidUtil;
@@ -88,7 +87,7 @@ public class UserDtoRepositoryImpl extends DtoRepositoryBase<UserDto, UserDtoLis
 		} else {
 			validate(dto);
 			BootUser entity = getRepository().findOne(dto.getId(), false);
-			PropertyCopyUtil.applyPatch(entity, dto);
+			getPropertyCopyUtil().applyPatch(entity, dto);
 			return getConverter().entity2Dto(entity, Scenario.MODIFY);
 		}
 	}

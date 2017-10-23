@@ -113,10 +113,4 @@ public class Approve extends BaseEntity {
 			return approve;
 		}
 	}
-
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

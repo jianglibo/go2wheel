@@ -55,10 +55,4 @@ public class ReceivedTextMessage extends BaseEntity {
 	public void setMsgId(String msgId) {
 		this.msgId = msgId;
 	}
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -10,7 +10,6 @@ import com.go2wheel.facade.PageFacade;
 import com.go2wheel.facade.MtModelFacadeRepository;
 import com.go2wheel.katharsis.dto.MtModelDto;
 import com.go2wheel.repository.MtModelRepository;
-import com.go2wheel.util.PropertyCopyUtil;
 
 /**
  * @author jianglibo@gmail.com
@@ -32,7 +31,7 @@ public class MtModelFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<MtMode
 	@Override
 	public MtModel newByDto(MtModelDto dto) {
 		MtModel entity = new MtModel();
-		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
+		getPropertyCopyUtil().copyPropertyWhenCreate(entity, dto);
 		return entity;
 	}
 

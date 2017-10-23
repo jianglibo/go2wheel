@@ -82,11 +82,6 @@ public class Post extends BaseEntity {
 		this.postShares = postShares;
 	}
 
-	@Override
-	public String[] propertiesOnCreating() {
-		return new String[]{"title", "content", "toAll"};
-	}
-
 	public boolean isToAll() {
 		return toAll;
 	}

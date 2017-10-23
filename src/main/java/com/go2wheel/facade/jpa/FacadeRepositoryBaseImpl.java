@@ -1,5 +1,7 @@
 ﻿package com.go2wheel.facade.jpa;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.go2wheel.domain.BaseEntity;
 import com.go2wheel.facade.FacadeRepositoryBase;
 import com.go2wheel.facade.Page;
@@ -7,10 +9,14 @@ import com.go2wheel.facade.PageFacade;
 import com.go2wheel.facade.SortBroker;
 import com.go2wheel.katharsis.dto.Dto;
 import com.go2wheel.repository.RepositoryBase;
+import com.go2wheel.util.PropertyCopyUtil;
 
 public abstract class FacadeRepositoryBaseImpl<T extends BaseEntity, D extends Dto, R extends RepositoryBase<T>> implements FacadeRepositoryBase<T, D> {
 
 	private final R jpaRepo;
+	
+	@Autowired
+	private PropertyCopyUtil propertyCopyUtil;
 	
 	public FacadeRepositoryBaseImpl(R jpaRepo) {
 		this.jpaRepo = jpaRepo;
@@ -48,6 +54,10 @@ public abstract class FacadeRepositoryBaseImpl<T extends BaseEntity, D extends D
 	
 	R getRepository() {
 		return jpaRepo;
+	}
+
+	public PropertyCopyUtil getPropertyCopyUtil() {
+		return propertyCopyUtil;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.go2wheel.katharsis.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import com.go2wheel.annotation.DtoToEntity;
@@ -23,6 +25,10 @@ public class MtSeriesDto extends DtoBase {
 	@NotNull
 	@JsonApiRelation(lookUp=LookupIncludeBehavior.AUTOMATICALLY_WHEN_NULL,serialize=SerializeType.LAZY, opposite="mtSerieses")
 	private ManufacturerDto manufacturer;
+	
+	
+	@JsonApiRelation(lookUp=LookupIncludeBehavior.NONE,serialize=SerializeType.LAZY, opposite="mtSeries")
+	private List<MtModelDto> models;
 
 	public String getName() {
 		return name;
@@ -32,6 +38,15 @@ public class MtSeriesDto extends DtoBase {
 		this.name = name;
 	}
 	
+	
+	public List<MtModelDto> getModels() {
+		return models;
+	}
+
+	public void setModels(List<MtModelDto> models) {
+		this.models = models;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("[%s,%s]", getId(), getName());

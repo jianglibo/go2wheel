@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 @Target({ java.lang.annotation.ElementType.FIELD })
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Documented
-public @interface ToDtoIgnore {
+public @interface DtoToEntityIgnore {
 	String value() default "";
 }

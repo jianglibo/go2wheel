@@ -116,12 +116,4 @@ public class UcToken extends BaseEntity {
     public static enum UcTokenFor {
         VERIFY_EMAIL, PASSWORD_RECOVER
     }
-
-
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

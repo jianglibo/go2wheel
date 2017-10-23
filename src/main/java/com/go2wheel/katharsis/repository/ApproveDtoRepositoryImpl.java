@@ -22,7 +22,6 @@ import com.go2wheel.katharsis.dto.converter.ApproveDtoConverter;
 import com.go2wheel.katharsis.dto.converter.DtoConverter.Scenario;
 import com.go2wheel.katharsis.exception.UnsupportedRequestException;
 import com.go2wheel.katharsis.repository.ApproveDtoRepository.ApproveDtoList;
-import com.go2wheel.util.PropertyCopyUtil;
 import com.go2wheel.util.QuerySpecUtil;
 import com.go2wheel.util.QuerySpecUtil.RelationQuery;
 import com.go2wheel.util.SecurityUtil;
@@ -64,7 +63,7 @@ public class ApproveDtoRepositoryImpl  extends DtoRepositoryBase<ApproveDto, App
 	@Override
 	public ApproveDto modify(ApproveDto dto) {
 		Approve entity = getRepository().findOne(dto.getId(), false);
-		PropertyCopyUtil.applyPatch(entity,dto);
+		getPropertyCopyUtil().applyPatch(entity,dto);
 		
 		if (BootGroup.class.getName().equals(entity.getTargetType())) {
 			BootGroup group = groupRepo.findOne(entity.getTargetId(), true);

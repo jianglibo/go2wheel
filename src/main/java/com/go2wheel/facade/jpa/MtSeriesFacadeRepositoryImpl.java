@@ -13,7 +13,6 @@ import com.go2wheel.facade.MtSeriesFacadeRepository;
 import com.go2wheel.katharsis.dto.MtSeriesDto;
 import com.go2wheel.repository.ManufacturerRepository;
 import com.go2wheel.repository.MtSeriesRepository;
-import com.go2wheel.util.PropertyCopyUtil;
 
 /**
  * @author jianglibo@gmail.com
@@ -38,7 +37,7 @@ public class MtSeriesFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<MtSer
 	@Override
 	public MtSeries newByDto(MtSeriesDto dto) {
 		MtSeries entity = new MtSeries();
-		PropertyCopyUtil.copyPropertyWhenCreate(entity, dto);
+		getPropertyCopyUtil().copyPropertyWhenCreate(entity, dto);
 		if (dto.getManufacturer() != null) {
 			entity.setManufacturer(manufacturerRepository.findOne(dto.getManufacturer().getId()));
 		}

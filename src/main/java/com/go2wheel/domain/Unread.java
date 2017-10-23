@@ -21,8 +21,6 @@ public class Unread extends BaseEntity {
 	
 	private String type;
 	
-//	private boolean read;
-	
 	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
@@ -52,18 +50,5 @@ public class Unread extends BaseEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	@Override
-	public String[] propertiesOnCreating() {
-		return null;
-	}
-
-//	public boolean isRead() {
-//		return read;
-//	}
-//
-//	public void setRead(boolean read) {
-//		this.read = read;
-//	}
 
 }

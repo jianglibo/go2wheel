@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest.meseries;
+package com.go2wheel.katharsis.rest.mtmodel;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -13,35 +13,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.go2wheel.JsonApiPostBodyWrapper;
-import com.go2wheel.JsonApiPostBodyWrapper.CreateOneBody;
 import com.go2wheel.JsonApiPostBodyWrapperBuilder;
 import com.go2wheel.KatharsisBase;
+import com.go2wheel.JsonApiPostBodyWrapper.CreateOneBody;
 import com.go2wheel.config.JsonApiResourceNames;
-import com.go2wheel.domain.Manufacturer;
+import com.go2wheel.domain.MtModel;
 import com.go2wheel.domain.MtSeries;
-import com.go2wheel.katharsis.dto.MtSeriesDto;
-import com.go2wheel.katharsis.rest.manufacturer.ManufacturerTUtil;
+import com.go2wheel.katharsis.dto.MtModelDto;
+import com.go2wheel.katharsis.rest.mtseries.MtSeriesTUtil;
 import com.go2wheel.util.MyJsonApiUrlBuilder;
 
-public class TestMtSeriesApi  extends KatharsisBase {
+public class TestMtModelApi extends KatharsisBase {
 	
 	@Autowired
-	private ManufacturerTUtil mftu;
+	private MtSeriesTUtil msUtil;
 	
 	@Before
 	public void b() throws JsonParseException, JsonMappingException, IOException {
 		initTestUser();
-		deleteAllMtSerieses();
+		deleteAllMtModels();
 	}
 	
 	@Test
 	public void tAddOneByRest() throws JsonParseException, JsonMappingException, IOException {
 //		private static String[] initProperties = new String[] {"name", "description"};
-		Manufacturer mf = mftu.createOne();
+		MtSeries ms = msUtil.createOne("versys");
 		JsonApiPostBodyWrapper<CreateOneBody> jbw = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName())
 				.addAttributePair("name", "versys")
 				.addAttributePair("description", "very good.")
-				.addOneRelation("manufacturer", JsonApiResourceNames.MANUFACTURER, mf.getId())
+				.addOneRelation("mtSeries", JsonApiResourceNames.MT_SERIES, ms.getId())
 				.build();
 		
 		String s = objectMapper.writeValueAsString(jbw);
@@ -50,12 +50,12 @@ public class TestMtSeriesApi  extends KatharsisBase {
 		response = postItemWithContent(s, jwt1);
 		writeDto(response, getResourceName(), ActionNames.POST_RESULT);
 		
-		MtSeriesDto newPost = getOne(response.getBody(), MtSeriesDto.class);
-		assertThat(newPost.getName(), equalTo("versys"));
+		MtModelDto newMtModel = getOne(response.getBody(), MtModelDto.class);
+		assertThat(newMtModel.getName(), equalTo("versys"));
 		
-		MtSeries p = mtSeriesRepo.findOne(newPost.getId());
+		MtModel m = mtModelRepo.findOne(newMtModel.getId());
 		
-		assertThat(p.getName(), equalTo("versys"));
+		assertThat(m.getName(), equalTo("versys"));
 		
 		MyJsonApiUrlBuilder b = new MyJsonApiUrlBuilder("?");
 		b.filters("name", "versys");
@@ -63,13 +63,13 @@ public class TestMtSeriesApi  extends KatharsisBase {
 		
 		response = requestForBody(null, url);
 		writeDto(response, getResourceName(), ActionNames.GET_LIST);
-		List<MtSeriesDto> newPosts = getList(response, MtSeriesDto.class);
-		assertThat(newPosts.size(), equalTo(1));
+		List<MtModelDto> newMtModels = getList(response, MtModelDto.class);
+		assertThat(newMtModels.size(), equalTo(1));
 	}
-
 
 	@Override
 	protected String getResourceName() {
-		return JsonApiResourceNames.MT_SERIES;
+		return JsonApiResourceNames.MT_MODEL;
 	}
+
 }

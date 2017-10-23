@@ -47,10 +47,4 @@ public class MessageNotify extends BaseEntity {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -37,6 +37,9 @@ public class ManufacturerDto extends DtoBase {
 	@Lob
 	private String legend;
 	
+	/**
+	 * 
+	 */
     @JsonApiRelation(lookUp=LookupIncludeBehavior.NONE, serialize=SerializeType.LAZY, opposite="manufacturer")
     private List<MtSeriesDto> mtSerieses = new ArrayList<>();
 

@@ -1,43 +1,22 @@
 ﻿package com.go2wheel.domain;
 
-import com.go2wheel.domain.BootUser.Gender;
 import javax.annotation.Generated;
-import javax.persistence.metamodel.ListAttribute;
-import javax.persistence.metamodel.SetAttribute;
-import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2017-06-29T09:02:14.599+0800")
+@Generated(value="Dali", date="2017-10-23T14:35:05.900+0800")
 @StaticMetamodel(BootUser.class)
-public class BootUser_ extends BaseEntity_ {
-	public static volatile SingularAttribute<BootUser, String> displayName;
-	public static volatile SingularAttribute<BootUser, String> avatar;
-	public static volatile SingularAttribute<BootUser, Boolean> emailVerified;
-	public static volatile SingularAttribute<BootUser, Boolean> mobileVerified;
-	public static volatile ListAttribute<BootUser, Post> posts;
-	public static volatile SingularAttribute<BootUser, Gender> gender;
-	public static volatile ListAttribute<BootUser, PostShare> postShares;
-	public static volatile ListAttribute<BootUser, Approve> sentApproves;
-	public static volatile ListAttribute<BootUser, Approve> receivedApproves;
-	public static volatile ListAttribute<BootUser, MessageNotify> notifies;
-	public static volatile SingularAttribute<BootUser, String> name;
-	public static volatile SingularAttribute<BootUser, String> email;
-	public static volatile SingularAttribute<BootUser, String> password;
-	public static volatile SingularAttribute<BootUser, String> mobile;
-	public static volatile SingularAttribute<BootUser, Boolean> accountNonExpired;
-	public static volatile SingularAttribute<BootUser, Boolean> accountNonLocked;
-	public static volatile SingularAttribute<BootUser, Boolean> credentialsNonExpired;
-	public static volatile SingularAttribute<BootUser, Boolean> enabled;
-	public static volatile SingularAttribute<BootUser, String> openId;
-	public static volatile SingularAttribute<BootUser, String> city;
-	public static volatile SingularAttribute<BootUser, String> country;
-	public static volatile SingularAttribute<BootUser, String> language;
-	public static volatile SingularAttribute<BootUser, String> province;
-	public static volatile ListAttribute<BootUser, GroupUserRelation> bootGroups;
-	public static volatile ListAttribute<BootUser, BootGroup> ownedGroups;
-	public static volatile ListAttribute<BootUser, FollowRelation> followers;
-	public static volatile ListAttribute<BootUser, FollowRelation> followeds;
-	public static volatile ListAttribute<BootUser, Medium> media;
-	public static volatile ListAttribute<BootUser, Unread> unreads;
-	public static volatile SetAttribute<BootUser, Role> roles;
+public class BootUser_ {
+	public static volatile CollectionAttribute<BootUser, Object> posts;
+	public static volatile CollectionAttribute<BootUser, Object> postShares;
+	public static volatile CollectionAttribute<BootUser, Object> sentApproves;
+	public static volatile CollectionAttribute<BootUser, Object> receivedApproves;
+	public static volatile CollectionAttribute<BootUser, Object> notifies;
+	public static volatile CollectionAttribute<BootUser, Object> bootGroups;
+	public static volatile CollectionAttribute<BootUser, Object> ownedGroups;
+	public static volatile CollectionAttribute<BootUser, Object> followers;
+	public static volatile CollectionAttribute<BootUser, Object> followeds;
+	public static volatile CollectionAttribute<BootUser, Object> media;
+	public static volatile CollectionAttribute<BootUser, Object> unreads;
+	public static volatile CollectionAttribute<BootUser, Object> roles;
 }

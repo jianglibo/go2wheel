@@ -84,11 +84,4 @@ public class LoginAttempt extends BaseEntity {
     public void setSuccess(boolean success) {
         this.success = success;
     }
-
-	@Override
-	public String[] propertiesOnCreating() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

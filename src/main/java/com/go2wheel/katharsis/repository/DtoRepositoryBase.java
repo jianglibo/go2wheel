@@ -13,6 +13,7 @@ import javax.validation.ValidatorFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.go2wheel.domain.BaseEntity;
 import com.go2wheel.facade.FacadeRepositoryBase;
@@ -45,6 +46,9 @@ public abstract class DtoRepositoryBase<T extends Dto, L extends ResourceListBas
 	private Validator validator;
 	
 	private final DtoConverter<E, T> converter;
+	
+	@Autowired
+	private PropertyCopyUtil propertyCopyUtil;
 	
 	public void validate(Dto o, Class<?>...groups) {
 		Set<ConstraintViolation<Dto>> cve = validator.validate(o, groups);
@@ -83,7 +87,7 @@ public abstract class DtoRepositoryBase<T extends Dto, L extends ResourceListBas
 	public T modify(T dto) {
 		validate(dto);
 		E entity = repository.findOne(dto.getId(), false);
-		PropertyCopyUtil.applyPatch(entity,dto);
+		getPropertyCopyUtil().applyPatch(entity,dto);
 		return converter.entity2Dto(saveToBackendRepo(dto, entity), Scenario.MODIFY);
 	}
 	
@@ -193,5 +197,9 @@ public abstract class DtoRepositoryBase<T extends Dto, L extends ResourceListBas
 	
 	protected UnsupportedRelationException getUnsupportRelationException(String thisDtoName, String oppositeName) {
 		return new UnsupportedRelationException(String.format("%s's opposite relation: %s does't exists.", thisDtoName, oppositeName));
+	}
+
+	public PropertyCopyUtil getPropertyCopyUtil() {
+		return propertyCopyUtil;
 	}
 }
