@@ -11,6 +11,8 @@ public interface FacadeRepositoryBase<E extends BaseEntity, D extends Dto> {
 	
 	E save(E entity, D dto);
 	
+	E save(E entity);
+	
 	void delete(E entity);
 	
 	E newByDto(D dto);

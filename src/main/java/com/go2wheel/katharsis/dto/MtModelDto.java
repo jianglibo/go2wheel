@@ -1,5 +1,7 @@
 package com.go2wheel.katharsis.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import com.go2wheel.annotation.DtoToEntity;
@@ -25,11 +27,19 @@ public class MtModelDto extends DtoBase {
 	
 	private Market market = Market.ALL;
 	
+	private String frameType;
+	
 	private String description;
 	
 	private int cylinders;
 	
-	private int enginCapacity;
+	private int year;
+	
+	private int displacement;
+	
+	private int groundClearance;
+	
+	private String ignition;
 	
 	private int bore; // multiply by 10
 	private int stroke; // multiply by 10
@@ -45,6 +55,9 @@ public class MtModelDto extends DtoBase {
 	private String transmission;
 	
 	private String finalDrive;
+	
+	private int frontWheelTravel;
+	private int rearWheelTravel;
 	
 	@NotNull
 	private EnginType.FinalDriveType finalDriveType;
@@ -73,7 +86,7 @@ public class MtModelDto extends DtoBase {
 	private String frontSuspension;
 	private String rearSuspension;
 	
-	private int casterAngle; // multiply by 10
+	private int rake; // multiply by 10
 	
 	private int trail; // multiply by 10
 	
@@ -85,8 +98,13 @@ public class MtModelDto extends DtoBase {
 	private int curbWeight;
 	private String emissions;
 	
-	private String colors;
+	private List<String> colors;
 	
+	private int overallLength;
+	
+	private int widthHeight;
+	
+	private int overallHeight;
 	
 	public String getName() {
 		return name;
@@ -136,17 +154,6 @@ public class MtModelDto extends DtoBase {
 	public void setCylinders(int cylinders) {
 		this.cylinders = cylinders;
 	}
-
-
-	public int getEnginCapacity() {
-		return enginCapacity;
-	}
-
-
-	public void setEnginCapacity(int enginCapacity) {
-		this.enginCapacity = enginCapacity;
-	}
-
 
 	public int getBore() {
 		return bore;
@@ -357,17 +364,6 @@ public class MtModelDto extends DtoBase {
 		this.rearSuspension = rearSuspension;
 	}
 
-
-	public int getCasterAngle() {
-		return casterAngle;
-	}
-
-
-	public void setCasterAngle(int casterAngle) {
-		this.casterAngle = casterAngle;
-	}
-
-
 	public int getTrail() {
 		return trail;
 	}
@@ -428,18 +424,129 @@ public class MtModelDto extends DtoBase {
 	}
 
 
-	public String getColors() {
+	public List<String> getColors() {
 		return colors;
 	}
 
 
-	public void setColors(String colors) {
+	public void setColors(List<String> colors) {
 		this.colors = colors;
 	}
+
 
 	@Override
 	public String toString() {
 		return String.format("[%s,%s]", getId(), getName());
+	}
+
+
+	public int getYear() {
+		return year;
+	}
+
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+
+	public int getDisplacement() {
+		return displacement;
+	}
+
+
+	public void setDisplacement(int displacement) {
+		this.displacement = displacement;
+	}
+
+
+	public String getIgnition() {
+		return ignition;
+	}
+
+
+	public void setIgnition(String ignition) {
+		this.ignition = ignition;
+	}
+
+
+	public int getRake() {
+		return rake;
+	}
+
+
+	public void setRake(int rake) {
+		this.rake = rake;
+	}
+
+
+	public int getOverallHeight() {
+		return overallHeight;
+	}
+
+
+	public void setOverallHeight(int overallHeight) {
+		this.overallHeight = overallHeight;
+	}
+
+
+	public int getOverallLength() {
+		return overallLength;
+	}
+
+
+	public void setOverallLength(int overallLength) {
+		this.overallLength = overallLength;
+	}
+
+
+	public int getWidthHeight() {
+		return widthHeight;
+	}
+
+
+	public void setWidthHeight(int widthHeight) {
+		this.widthHeight = widthHeight;
+	}
+
+
+	public int getFrontWheelTravel() {
+		return frontWheelTravel;
+	}
+
+
+	public void setFrontWheelTravel(int frontWheelTravel) {
+		this.frontWheelTravel = frontWheelTravel;
+	}
+
+
+	public int getRearWheelTravel() {
+		return rearWheelTravel;
+	}
+
+
+	public void setRearWheelTravel(int rearWheelTravel) {
+		this.rearWheelTravel = rearWheelTravel;
+	}
+
+
+	public String getFrameType() {
+		return frameType;
+	}
+
+
+	public void setFrameType(String frameType) {
+		this.frameType = frameType;
+	}
+
+
+	public int getGroundClearance() {
+		return groundClearance;
+	}
+
+
+	public void setGroundClearance(int groundClearance) {
+		this.groundClearance = groundClearance;
 	}
 
 }

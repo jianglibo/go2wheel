@@ -1,18 +1,23 @@
 package com.go2wheel.domain;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import com.go2wheel.constant.EnginType;
 import com.go2wheel.constant.Market;
 
 @Entity
-@Table(name = "mtmodel")
+@Table(name = "mtmodel", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "MTSERIES_ID"})})
 public class MtModel extends BaseEntity {
 
 	/**
@@ -24,17 +29,24 @@ public class MtModel extends BaseEntity {
 	
 	@NotNull
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="MTSERIES_ID")
 	private MtSeries mtSeries;
+	
+	private int year;
 	
 	@Enumerated(EnumType.STRING)
 	@NotNull
 	private Market market = Market.ALL;
 	
+	private String frameType;
+	
+	private int groundClearance;
+	
 	private String description;
 	
 	private int cylinders;
 	
-	private int enginCapacity;
+	private int displacement;
 	
 	private int bore; // multiply by 10
 	private int stroke; // multiply by 10
@@ -71,6 +83,8 @@ public class MtModel extends BaseEntity {
 	@NotNull
 	private EnginType.IgnitionType ignitionType;
 	
+	private String ignition;
+	
 	private String frontTire;
 	private String rearTire;
 	
@@ -83,19 +97,31 @@ public class MtModel extends BaseEntity {
 	private String frontSuspension;
 	private String rearSuspension;
 	
-	private int casterAngle; // multiply by 10
+	private int rake; // multiply by 10
 	
 	private int trail; // multiply by 10
 	
 	private int wheelbase; 
 	private int seatHeight;
 	
+	private int frontWheelTravel;
+	private int rearWheelTravel;
+	
 	private int fuelCapacity;
+	
+	private int overallLength;
+	
+	private int widthHeight;
+	
+	private int overallHeight;
+	
+	
 	
 	private int curbWeight;
 	private String emissions;
 	
-	private String colors;
+	@ElementCollection(fetch=FetchType.EAGER)
+	private List<String> colors;
 	
 
 	public String getName() {
@@ -117,14 +143,6 @@ public class MtModel extends BaseEntity {
 
 	public void setCylinders(int cylinders) {
 		this.cylinders = cylinders;
-	}
-
-	public int getEnginCapacity() {
-		return enginCapacity;
-	}
-
-	public void setEnginCapacity(int enginCapacity) {
-		this.enginCapacity = enginCapacity;
 	}
 
 	public int getBore() {
@@ -295,14 +313,6 @@ public class MtModel extends BaseEntity {
 		this.rearSuspension = rearSuspension;
 	}
 
-	public int getCasterAngle() {
-		return casterAngle;
-	}
-
-	public void setCasterAngle(int casterAngle) {
-		this.casterAngle = casterAngle;
-	}
-
 	public int getTrail() {
 		return trail;
 	}
@@ -351,11 +361,11 @@ public class MtModel extends BaseEntity {
 		this.emissions = emissions;
 	}
 
-	public String getColors() {
+	public List<String> getColors() {
 		return colors;
 	}
 
-	public void setColors(String colors) {
+	public void setColors(List<String> colors) {
 		this.colors = colors;
 	}
 
@@ -377,6 +387,94 @@ public class MtModel extends BaseEntity {
 
 	public void setMtSeries(MtSeries mtSeries) {
 		this.mtSeries = mtSeries;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public int getDisplacement() {
+		return displacement;
+	}
+
+	public void setDisplacement(int displacement) {
+		this.displacement = displacement;
+	}
+
+	public String getIgnition() {
+		return ignition;
+	}
+
+	public void setIgnition(String ignition) {
+		this.ignition = ignition;
+	}
+
+	public int getRake() {
+		return rake;
+	}
+
+	public void setRake(int rake) {
+		this.rake = rake;
+	}
+
+	public int getOverallLength() {
+		return overallLength;
+	}
+
+	public void setOverallLength(int overallLength) {
+		this.overallLength = overallLength;
+	}
+
+	public int getWidthHeight() {
+		return widthHeight;
+	}
+
+	public void setWidthHeight(int widthHeight) {
+		this.widthHeight = widthHeight;
+	}
+
+	public int getOverallHeight() {
+		return overallHeight;
+	}
+
+	public void setOverallHeight(int overallHeight) {
+		this.overallHeight = overallHeight;
+	}
+
+	public int getFrontWheelTravel() {
+		return frontWheelTravel;
+	}
+
+	public void setFrontWheelTravel(int frontWheelTravel) {
+		this.frontWheelTravel = frontWheelTravel;
+	}
+
+	public int getRearWheelTravel() {
+		return rearWheelTravel;
+	}
+
+	public void setRearWheelTravel(int rearWheelTravel) {
+		this.rearWheelTravel = rearWheelTravel;
+	}
+
+	public String getFrameType() {
+		return frameType;
+	}
+
+	public void setFrameType(String frameType) {
+		this.frameType = frameType;
+	}
+
+	public int getGroundClearance() {
+		return groundClearance;
+	}
+
+	public void setGroundClearance(int groundClearance) {
+		this.groundClearance = groundClearance;
 	}
 	
 }

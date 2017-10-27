@@ -55,4 +55,9 @@ public class MtSeriesFacadeRepositoryImpl extends FacadeRepositoryBaseImpl<MtSer
 		org.springframework.data.domain.Page<MtSeries> opage = getRepository().findByManufacturer(mf, new SimplePageable(pf));
 		return new Page<>(opage.getTotalElements(), opage.getContent());
 	}
+
+	@Override
+	public MtSeries findByName(String name) {
+		return getRepository().findByName(name);
+	}
 }

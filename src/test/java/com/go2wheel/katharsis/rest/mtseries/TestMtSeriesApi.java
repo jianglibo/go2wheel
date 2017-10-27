@@ -87,7 +87,6 @@ public class TestMtSeriesApi  extends KatharsisBase {
 		List<MtModelDto> mtmodels = getList(response, MtModelDto.class);
 		assertThat(mtmodels.size(), equalTo(3));
 		
-		
 		url = buildRelationUrl(ms, "models") + new MyJsonApiUrlBuilder("?").page(2, 0).build();
 		response = requestForBody(null, url);
 		writeDto(response, getResourceName(), "relation-mtSerieses");

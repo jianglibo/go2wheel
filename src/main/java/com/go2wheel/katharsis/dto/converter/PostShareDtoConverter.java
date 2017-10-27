@@ -7,7 +7,7 @@ import com.go2wheel.domain.PostShare;
 import com.go2wheel.katharsis.dto.PostShareDto;
 
 @Component
-public class PostShareDtoConverter implements DtoConverter<PostShare, PostShareDto> {
+public class PostShareDtoConverter extends DtoConverterBase<PostShare, PostShareDto> {
 
 	@Autowired
 	private UserDtoConverter userConverter;
@@ -15,10 +15,8 @@ public class PostShareDtoConverter implements DtoConverter<PostShare, PostShareD
 	@Autowired
 	private PostDtoConverter postConverter;
 
-
 	@Override
-	public PostShareDto entity2Dto(PostShare entity,Scenario scenario) {
-		PostShareDto dto = new PostShareDto();
+	protected PostShareDto afterPropertyCopy(PostShare entity, PostShareDto dto, Scenario scenario) {
 		dto.setBootUser(userConverter.entity2Dto(entity.getBootUser(), scenario));
 		dto.setPost(postConverter.entity2Dto(entity.getPost(), scenario));
 		return dto;

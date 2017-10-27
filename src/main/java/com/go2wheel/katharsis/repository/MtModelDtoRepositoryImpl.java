@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.go2wheel.domain.MtModel;
+import com.go2wheel.domain.MtSeries;
 import com.go2wheel.facade.Page;
 import com.go2wheel.facade.MtModelFacadeRepository;
+import com.go2wheel.facade.MtSeriesFacadeRepository;
 import com.go2wheel.katharsis.dto.MtModelDto;
 import com.go2wheel.katharsis.dto.converter.DtoConverter.Scenario;
 import com.go2wheel.katharsis.dto.converter.MtModelDtoConverter;
@@ -21,6 +23,8 @@ import io.katharsis.queryspec.QuerySpec;
 @Component
 public class MtModelDtoRepositoryImpl  extends DtoRepositoryBase<MtModelDto, MtModelDtoList, MtModel, MtModelFacadeRepository> implements MtModelDtoRepository {
 	
+	@Autowired
+	private MtSeriesFacadeRepository mtSeriesRepo;
 	
 	@Autowired
 	public MtModelDtoRepositoryImpl(MtModelFacadeRepository repository, MtModelDtoConverter converter) {
@@ -41,6 +45,12 @@ public class MtModelDtoRepositoryImpl  extends DtoRepositoryBase<MtModelDto, MtM
 
 	@Override
 	protected MtModelDtoList findWithRelationAndSpec(RelationQuery rq, QuerySpec querySpec) {
+		if ("mtSeries".equals(rq.getRelationName())) {
+			MtSeries ms = mtSeriesRepo.findOne(rq.getRelationIds().get(0), false);
+			Page<MtModel> mtModels = getRepository().findByMtSeries(ms, QuerySpecUtil.getPageFacade(querySpec));
+			return convertToResourceList(mtModels, Scenario.FIND_LIST);
+		}
+
 		return null;
 	}
 }

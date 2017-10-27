@@ -12,4 +12,12 @@ public class HomeController {
 	public String dispatch() {
 		return "Hello!";
 	}
+	
+	
+	@RequestMapping(path = "/adminarea/importmtmodel")
+	@ResponseBody
+	public String importMtModel() {
+		return "Hello!";
+	}
+
 }

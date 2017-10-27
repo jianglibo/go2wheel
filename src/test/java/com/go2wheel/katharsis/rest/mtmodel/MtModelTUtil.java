@@ -7,6 +7,12 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.go2wheel.constant.EnginType.CoolType;
+import com.go2wheel.constant.EnginType.CylinderHead;
+import com.go2wheel.constant.EnginType.EnginePosition;
+import com.go2wheel.constant.EnginType.FinalDriveType;
+import com.go2wheel.constant.EnginType.IgnitionType;
+import com.go2wheel.constant.Market;
 import com.go2wheel.domain.MtModel;
 import com.go2wheel.domain.MtSeries;
 import com.go2wheel.katharsis.rest.mtseries.MtSeriesTUtil;
@@ -29,6 +35,12 @@ public class MtModelTUtil {
 	public MtModel createOne(MtSeries ms, String name) {
 		MtModel mm = new MtModel();
 		mm.setName(name);
+		mm.setMarket(Market.CHINA);
+		mm.setFinalDriveType(FinalDriveType.CHAIN);
+		mm.setCoolType(CoolType.LIQUID);
+		mm.setCylinderHead(CylinderHead.DOHC);
+		mm.setEnginPosition(EnginePosition.INLINE);
+		mm.setIgnitionType(IgnitionType.FULL_TRANSISTORIZED);
 		mm.setDescription("dd");
 		mm.setMtSeries(ms);
 		return mtModelRepo.save(mm);

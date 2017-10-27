@@ -33,6 +33,11 @@ public abstract class FacadeRepositoryBaseImpl<T extends BaseEntity, D extends D
 	}
 	
 	@Override
+	public T save(T entity) {
+		return getRepository().save(entity);
+	}
+	
+	@Override
 	public long count() {
 		return jpaRepo.count();
 	}

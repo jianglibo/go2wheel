@@ -7,14 +7,13 @@ import com.go2wheel.domain.FollowRelation;
 import com.go2wheel.katharsis.dto.FollowRelationDto;
 
 @Component
-public class FollowRelationDtoConverter implements DtoConverter<FollowRelation, FollowRelationDto> {
+public class FollowRelationDtoConverter extends DtoConverterBase<FollowRelation, FollowRelationDto> {
 
 	@Autowired
 	private UserDtoConverter userConverter;
 
 	@Override
-	public FollowRelationDto entity2Dto(FollowRelation entity, Scenario scenario) {
-		FollowRelationDto dto = new FollowRelationDto();
+	protected FollowRelationDto afterPropertyCopy(FollowRelation entity, FollowRelationDto dto, Scenario scenario) {
 		dto.setFollower(userConverter.entity2Dto(entity.getFollower(), scenario));
 		dto.setBefollowed(userConverter.entity2Dto(entity.getFollowed(), scenario));
 		return dto;

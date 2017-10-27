@@ -10,4 +10,6 @@ public interface MtSeriesFacadeRepository extends FacadeRepositoryBase<MtSeries,
 	Page<MtSeries> findByNameContaining(String name, PageFacade pf);
 	
 	Page<MtSeries> findByManufacturer(Manufacturer mf, PageFacade pf);
+
+	MtSeries findByName(String name);
 }

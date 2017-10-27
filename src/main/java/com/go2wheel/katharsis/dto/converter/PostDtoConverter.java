@@ -2,7 +2,6 @@
 
 import java.util.stream.Collectors;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +10,7 @@ import com.go2wheel.facade.MediumFacadeRepository;
 import com.go2wheel.katharsis.dto.PostDto;
 
 @Component
-public class PostDtoConverter implements DtoConverter<Post, PostDto> {
+public class PostDtoConverter extends DtoConverterBase<Post, PostDto> {
 	
 	@Autowired
 	private UserDtoConverter userConverter;
@@ -24,9 +23,7 @@ public class PostDtoConverter implements DtoConverter<Post, PostDto> {
 	private MediumDtoConverter mediumConverter;
 
 	@Override
-	public PostDto entity2Dto(Post entity, Scenario scenario) {
-		PostDto dto = new PostDto();
-		BeanUtils.copyProperties(entity, dto, "creator", "media");
+	protected PostDto afterPropertyCopy(Post entity, PostDto dto, Scenario scenario) {
 		dto.setCreator(userConverter.entity2Dto(entity.getCreator(), scenario));
 		if (entity.getMedia() != null) {
 			dto.setMedia(entity.getMedia().stream().map(en -> mediumConverter.entity2Dto(en, Scenario.RELATION_LIST)).collect(Collectors.toList()));

@@ -7,7 +7,7 @@ import com.go2wheel.domain.GroupUserRelation;
 import com.go2wheel.katharsis.dto.GroupUserRelationDto;
 
 @Component
-public class GroupUserRelationDtoConverter implements DtoConverter<GroupUserRelation, GroupUserRelationDto> {
+public class GroupUserRelationDtoConverter extends DtoConverterBase<GroupUserRelation, GroupUserRelationDto> {
 
 	@Autowired
 	private UserDtoConverter userConverter;
@@ -15,10 +15,9 @@ public class GroupUserRelationDtoConverter implements DtoConverter<GroupUserRela
 	@Autowired
 	private GroupDtoConverter groupConverter;
 
-
 	@Override
-	public GroupUserRelationDto entity2Dto(GroupUserRelation entity, Scenario scenario) {
-		GroupUserRelationDto dto = new GroupUserRelationDto();
+	protected GroupUserRelationDto afterPropertyCopy(GroupUserRelation entity, GroupUserRelationDto dto,
+			Scenario scenario) {
 		dto.setBootUser(userConverter.entity2Dto(entity.getBootUser(), scenario));
 		dto.setBootGroup(groupConverter.entity2Dto(entity.getBootGroup(), scenario));
 		return dto;

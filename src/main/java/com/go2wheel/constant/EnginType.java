@@ -3,7 +3,7 @@ package com.go2wheel.constant;
 public class EnginType {
 	
 	public static enum CoolType {
-		AIR, LIQUID, OIL
+		AIR, LIQUID, OIL, WATER
 	}
 	
 	public static enum EnginePosition {

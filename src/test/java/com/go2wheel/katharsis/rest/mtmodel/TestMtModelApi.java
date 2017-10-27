@@ -17,6 +17,12 @@ import com.go2wheel.JsonApiPostBodyWrapperBuilder;
 import com.go2wheel.KatharsisBase;
 import com.go2wheel.JsonApiPostBodyWrapper.CreateOneBody;
 import com.go2wheel.config.JsonApiResourceNames;
+import com.go2wheel.constant.Market;
+import com.go2wheel.constant.EnginType.CoolType;
+import com.go2wheel.constant.EnginType.CylinderHead;
+import com.go2wheel.constant.EnginType.EnginePosition;
+import com.go2wheel.constant.EnginType.FinalDriveType;
+import com.go2wheel.constant.EnginType.IgnitionType;
 import com.go2wheel.domain.MtModel;
 import com.go2wheel.domain.MtSeries;
 import com.go2wheel.katharsis.dto.MtModelDto;
@@ -39,8 +45,14 @@ public class TestMtModelApi extends KatharsisBase {
 //		private static String[] initProperties = new String[] {"name", "description"};
 		MtSeries ms = msUtil.createOne("versys");
 		JsonApiPostBodyWrapper<CreateOneBody> jbw = JsonApiPostBodyWrapperBuilder.getOneBuilder(getResourceName())
-				.addAttributePair("name", "versys")
+				.addAttributePair("name", "versys-650")
 				.addAttributePair("description", "very good.")
+				.addAttributePair("market", Market.CHINA)
+				.addAttributePair("finalDriveType", FinalDriveType.CHAIN)
+				.addAttributePair("coolType", CoolType.LIQUID)
+				.addAttributePair("cylinderHead", CylinderHead.DOHC)
+				.addAttributePair("enginPosition", EnginePosition.INLINE)
+				.addAttributePair("ignitionType", IgnitionType.FULL_TRANSISTORIZED)
 				.addOneRelation("mtSeries", JsonApiResourceNames.MT_SERIES, ms.getId())
 				.build();
 		
@@ -51,14 +63,14 @@ public class TestMtModelApi extends KatharsisBase {
 		writeDto(response, getResourceName(), ActionNames.POST_RESULT);
 		
 		MtModelDto newMtModel = getOne(response.getBody(), MtModelDto.class);
-		assertThat(newMtModel.getName(), equalTo("versys"));
+		assertThat(newMtModel.getName(), equalTo("versys-650"));
 		
 		MtModel m = mtModelRepo.findOne(newMtModel.getId());
 		
-		assertThat(m.getName(), equalTo("versys"));
+		assertThat(m.getName(), equalTo("versys-650"));
 		
 		MyJsonApiUrlBuilder b = new MyJsonApiUrlBuilder("?");
-		b.filters("name", "versys");
+		b.filters("name", "versys-650");
 		String url = getBaseURI() +  b.build();
 		
 		response = requestForBody(null, url);

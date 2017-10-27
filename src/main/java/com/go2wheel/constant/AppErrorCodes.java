@@ -14,6 +14,8 @@ public class AppErrorCodes {
 	public static String UNSUPPORTED_REQUEST = "E4001004";
 	public static String UNSUPPORTED_RELATION = "E4001005";
 	
+	public static String MISSING_REQUIRED_FIELD = "E4001006";
+	
 	public static String UNKNOWN = "E4001999";
 
 }

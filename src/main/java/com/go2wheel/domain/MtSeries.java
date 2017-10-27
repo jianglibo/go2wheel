@@ -5,17 +5,20 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.go2wheel.annotation.DtoToEntityIgnore;
 import com.go2wheel.annotation.EntityToDtoIgnore;
 
 @Entity
-@Table(name = "mtseries")
+@Table(name = "mtseries", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "MANUFACTURER_ID"})})
 public class MtSeries extends BaseEntity {
 	
 	/**
@@ -33,11 +36,14 @@ public class MtSeries extends BaseEntity {
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="mtSeries")
 	@EntityToDtoIgnore
+	@DtoToEntityIgnore
 	private List<MtModel> models = new ArrayList<>();
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@NotNull
 	@EntityToDtoIgnore
+	@DtoToEntityIgnore
+	@JoinColumn(name = "MANUFACTURER_ID")
 	private Manufacturer manufacturer;
 
 	public String getName() {

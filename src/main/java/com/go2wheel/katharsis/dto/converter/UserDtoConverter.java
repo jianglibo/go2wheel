@@ -2,7 +2,6 @@
 
 import java.util.stream.Collectors;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,18 +9,15 @@ import com.go2wheel.domain.BootUser;
 import com.go2wheel.katharsis.dto.UserDto;
 
 @Component
-public class UserDtoConverter implements DtoConverter<BootUser, UserDto> {
+public class UserDtoConverter extends DtoConverterBase<BootUser, UserDto> {
 	
 	@Autowired
 	private RoleDtoConverter roleConverter;
 
 	@Override
-	public UserDto entity2Dto(BootUser entity, Scenario scenario) {
-		// 18 fields.
-		UserDto dto = new UserDto();
-		BeanUtils.copyProperties(entity, dto, "password", "roles", "followers", "followeds", "media", "posts", "joinedGroups", "ownedGroups", "receivedPosts", "sentApproves", "receivedApproves", "notifies", "unreads");
-    	dto.setRoles(entity.getRoles().stream().map(r -> roleConverter.entity2Dto(r, scenario)).collect(Collectors.toList()));
-    	return dto;
+	protected UserDto afterPropertyCopy(BootUser entity, UserDto dto, Scenario scenario) {
+		dto.setRoles(entity.getRoles().stream().map(r -> roleConverter.entity2Dto(r, scenario)).collect(Collectors.toList()));
+		return dto;
 	}
 
 }

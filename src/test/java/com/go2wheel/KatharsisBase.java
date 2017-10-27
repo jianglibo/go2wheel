@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -61,6 +62,15 @@ public abstract class KatharsisBase extends Tbase {
 	private static String mt = "application/vnd.api+json;charset=UTF-8";
 	
 	private static Path dtosPath = Paths.get("fixturesingit", "dtos");
+	
+	protected static Path modelFixtureFolder = Paths.get("fixturesingit", "motormodels");
+	
+	protected InputStream readModelFixtureStream(String fn) throws IOException {
+		if (!fn.endsWith("properties")) {
+			fn = fn + ".properties";
+		}
+		return Files.newInputStream(modelFixtureFolder.resolve(fn));
+	}
 	
 	protected static class ActionNames {
 		public static String POST_RESULT = "postresult";
@@ -236,6 +246,7 @@ public abstract class KatharsisBase extends Tbase {
 	}
 	
 	public void deleteAllMtSerieses() {
+		mtModelRepo.deleteAll();
 		mtSeriesRepo.deleteAll();
 	}
 	
