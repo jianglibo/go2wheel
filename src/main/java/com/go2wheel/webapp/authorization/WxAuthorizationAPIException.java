@@ -1,4 +1,4 @@
-﻿package com.go2wheel.webapp.authorization;
+package com.go2wheel.webapp.authorization;
 
 class WxAuthorizationAPIException extends Exception {
 	private static final long serialVersionUID = -3088657611850871775L;

@@ -17,7 +17,7 @@ import com.go2wheel.constant.EnginType;
 import com.go2wheel.constant.Market;
 
 @Entity
-@Table(name = "mtmodel", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "MTSERIES_ID"})})
+@Table(name = "mtmodel", uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "MTSERIES_ID", "year"})})
 public class MtModel extends BaseEntity {
 
 	/**

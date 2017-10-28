@@ -1,4 +1,4 @@
-﻿package com.go2wheel.vo;
+package com.go2wheel.vo;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

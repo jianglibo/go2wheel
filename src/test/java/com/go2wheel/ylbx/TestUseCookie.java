@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 2017 jianglibo@gmail.com
  *
  */

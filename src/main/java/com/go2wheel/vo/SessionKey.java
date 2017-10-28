@@ -1,4 +1,4 @@
-﻿package com.go2wheel.vo;
+package com.go2wheel.vo;
 
 /**
  * @author jianglibo@gmail.com

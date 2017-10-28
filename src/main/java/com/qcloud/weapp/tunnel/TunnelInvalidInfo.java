@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.tunnel;
+package com.qcloud.weapp.tunnel;
 
 /**
  * 表示一个信道不可用的信息

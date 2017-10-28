@@ -1,4 +1,4 @@
-﻿package com.go2wheel;
+package com.go2wheel;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 

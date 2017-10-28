@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

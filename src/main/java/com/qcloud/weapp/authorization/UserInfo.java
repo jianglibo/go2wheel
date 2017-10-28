@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.authorization;
+package com.qcloud.weapp.authorization;
 
 import org.json.JSONException;
 import org.json.JSONObject;

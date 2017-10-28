@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;

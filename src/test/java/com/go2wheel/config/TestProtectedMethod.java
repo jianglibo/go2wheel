@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 import org.junit.Test;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;

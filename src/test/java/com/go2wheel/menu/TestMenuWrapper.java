@@ -1,4 +1,4 @@
-﻿package com.go2wheel.menu;
+package com.go2wheel.menu;
 
 import org.junit.Test;
 

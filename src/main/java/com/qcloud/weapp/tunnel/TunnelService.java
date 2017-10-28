@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.tunnel;
+package com.qcloud.weapp.tunnel;
 
 import java.io.BufferedReader;
 import java.io.IOException;

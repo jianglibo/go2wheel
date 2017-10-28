@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.repository;
+package com.go2wheel.katharsis.repository;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.controller;
+package com.go2wheel.controller;
 
 import java.util.HashMap;
 import java.util.Map;

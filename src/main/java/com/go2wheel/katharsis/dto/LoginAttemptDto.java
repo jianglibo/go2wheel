@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.dto;
+package com.go2wheel.katharsis.dto;
 
 import com.go2wheel.annotation.DtoToEntity;
 import com.go2wheel.config.JsonApiResourceNames;

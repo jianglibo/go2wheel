@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.alter;
+package com.go2wheel.katharsis.alter;
 
 import java.util.Arrays;
 import java.util.HashSet;

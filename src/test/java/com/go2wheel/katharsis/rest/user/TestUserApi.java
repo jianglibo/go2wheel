@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest.user;
+package com.go2wheel.katharsis.rest.user;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;

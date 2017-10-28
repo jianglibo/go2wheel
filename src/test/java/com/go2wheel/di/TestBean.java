@@ -1,4 +1,4 @@
-﻿package com.go2wheel.di;
+package com.go2wheel.di;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

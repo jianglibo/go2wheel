@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config.userdetail;
+package com.go2wheel.config.userdetail;
 
 import java.util.ArrayList;
 import java.util.Arrays;

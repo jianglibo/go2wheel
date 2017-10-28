@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.tunnel;
+package com.qcloud.weapp.tunnel;
 
 import org.json.JSONException;
 import org.json.JSONObject;

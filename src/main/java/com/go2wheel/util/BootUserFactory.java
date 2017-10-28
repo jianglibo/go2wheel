@@ -1,4 +1,4 @@
-﻿package com.go2wheel.util;
+package com.go2wheel.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

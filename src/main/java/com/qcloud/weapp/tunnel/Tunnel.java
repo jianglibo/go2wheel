@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.tunnel;
+package com.qcloud.weapp.tunnel;
 
 /**
  * 表示一个信道，不可以被实例化。可以通过 Tunnel.getById() 获取。

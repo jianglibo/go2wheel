@@ -1,4 +1,4 @@
-﻿package com.go2wheel.api;
+package com.go2wheel.api;
 
 import java.io.IOException;
 import java.util.List;

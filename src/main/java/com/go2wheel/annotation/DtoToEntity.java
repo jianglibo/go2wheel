@@ -1,4 +1,4 @@
-﻿package com.go2wheel.annotation;
+package com.go2wheel.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

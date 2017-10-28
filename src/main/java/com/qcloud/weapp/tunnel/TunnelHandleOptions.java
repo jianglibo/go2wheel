@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.tunnel;
+package com.qcloud.weapp.tunnel;
 
 /**
  * 表示信道服务选项

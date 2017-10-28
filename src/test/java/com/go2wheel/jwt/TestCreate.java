@@ -1,4 +1,4 @@
-﻿package com.go2wheel.jwt;
+package com.go2wheel.jwt;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;

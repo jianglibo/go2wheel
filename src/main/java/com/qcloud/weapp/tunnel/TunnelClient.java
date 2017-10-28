@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.tunnel;
+package com.qcloud.weapp.tunnel;
 
 import com.qcloud.weapp.ConfigurationException;
 import com.qcloud.weapp.ConfigurationManager;

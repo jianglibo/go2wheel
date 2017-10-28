@@ -1,4 +1,4 @@
-﻿package com.go2wheel.webapp.authorization;
+package com.go2wheel.webapp.authorization;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;

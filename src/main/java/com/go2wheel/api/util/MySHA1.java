@@ -1,4 +1,4 @@
-﻿package com.go2wheel.api.util;
+package com.go2wheel.api.util;
 
 import java.security.MessageDigest;
 import java.util.Arrays;

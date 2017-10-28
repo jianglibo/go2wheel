@@ -1,4 +1,4 @@
-﻿package com.go2wheel.domain;
+package com.go2wheel.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

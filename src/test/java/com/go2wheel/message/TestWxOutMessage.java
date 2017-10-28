@@ -1,4 +1,4 @@
-﻿package com.go2wheel.message;
+package com.go2wheel.message;
 
 import static org.junit.Assert.assertTrue;
 

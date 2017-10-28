@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.exception;
+package com.go2wheel.katharsis.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;

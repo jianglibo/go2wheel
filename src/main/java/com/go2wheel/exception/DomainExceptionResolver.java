@@ -1,4 +1,4 @@
-﻿package com.go2wheel.exception;
+package com.go2wheel.exception;
 
 import java.lang.reflect.UndeclaredThrowableException;
 

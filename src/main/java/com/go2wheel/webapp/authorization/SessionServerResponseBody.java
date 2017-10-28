@@ -1,4 +1,4 @@
-﻿package com.go2wheel.webapp.authorization;
+package com.go2wheel.webapp.authorization;
 
 public class SessionServerResponseBody {
 	

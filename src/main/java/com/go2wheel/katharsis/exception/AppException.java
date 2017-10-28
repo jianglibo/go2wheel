@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.exception;
+package com.go2wheel.katharsis.exception;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.webapp;
+package com.go2wheel.webapp;
 
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;

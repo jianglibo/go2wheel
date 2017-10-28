@@ -1,6 +1,5 @@
-﻿package com.go2wheel.domain;
+package com.go2wheel.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -20,7 +19,6 @@ public class Role extends BaseEntity implements GrantedAuthority {
     private static final long serialVersionUID = 1L;
 
     @NotNull
-    @Column(nullable = false)
     private String name;
 
     public Role() {

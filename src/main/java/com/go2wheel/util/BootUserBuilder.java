@@ -1,4 +1,4 @@
-﻿package com.go2wheel.util;
+package com.go2wheel.util;
 
 import java.time.Instant;
 import java.util.Arrays;

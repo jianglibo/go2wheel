@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.dto;
+package com.go2wheel.katharsis.dto;
 
 import java.util.Date;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.facade.jpa;
+package com.go2wheel.facade.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;

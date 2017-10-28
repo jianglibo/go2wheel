@@ -1,4 +1,4 @@
-﻿package com.go2wheel.constant;
+package com.go2wheel.constant;
 
 public class AppErrorCodes {
 	// 401 Unauthorized

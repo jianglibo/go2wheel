@@ -1,4 +1,4 @@
-﻿package com.go2wheel.jwt;
+package com.go2wheel.jwt;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

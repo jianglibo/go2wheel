@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

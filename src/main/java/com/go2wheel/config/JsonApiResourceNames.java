@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 public class JsonApiResourceNames {
 

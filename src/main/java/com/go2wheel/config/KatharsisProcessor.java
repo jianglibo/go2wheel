@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.facade;
+package com.go2wheel.facade;
 
 import java.util.List;
 

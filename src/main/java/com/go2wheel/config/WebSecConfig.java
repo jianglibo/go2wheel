@@ -1,4 +1,4 @@
-﻿package com.go2wheel.config;
+package com.go2wheel.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

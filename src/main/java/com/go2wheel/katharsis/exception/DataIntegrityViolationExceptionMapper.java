@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.exception;
+package com.go2wheel.katharsis.exception;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;

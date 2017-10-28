@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.authorization;
+package com.qcloud.weapp.authorization;
 
 /**
  * 登录服务常量，包括登录错误类型

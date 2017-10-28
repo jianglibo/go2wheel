@@ -1,4 +1,4 @@
-﻿package com.go2wheel.startup;
+package com.go2wheel.startup;
 
 import java.util.Set;
 import java.util.stream.Collectors;

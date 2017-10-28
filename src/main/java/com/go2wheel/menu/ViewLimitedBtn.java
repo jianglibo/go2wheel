@@ -1,4 +1,4 @@
-﻿package com.go2wheel.menu;
+package com.go2wheel.menu;
 
 public class ViewLimitedBtn extends MenuButton {
 	

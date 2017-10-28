@@ -1,4 +1,4 @@
-﻿package com.go2wheel.message.in;
+package com.go2wheel.message.in;
 
 import com.go2wheel.message.WxInMessage;
 

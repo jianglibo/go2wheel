@@ -1,4 +1,4 @@
-﻿package com.go2wheel.facade;
+package com.go2wheel.facade;
 
 import com.go2wheel.domain.BaseEntity;
 import com.go2wheel.katharsis.dto.Dto;

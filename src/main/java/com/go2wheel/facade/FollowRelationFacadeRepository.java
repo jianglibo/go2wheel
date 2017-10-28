@@ -1,4 +1,4 @@
-﻿package com.go2wheel.facade;
+package com.go2wheel.facade;
 
 import com.go2wheel.domain.BootUser;
 import com.go2wheel.domain.FollowRelation;

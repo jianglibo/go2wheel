@@ -1,4 +1,4 @@
-﻿package com.go2wheel.facade.jpa;
+package com.go2wheel.facade.jpa;
 
 import java.util.List;
 import java.util.stream.Collectors;

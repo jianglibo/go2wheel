@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.authorization;
+package com.qcloud.weapp.authorization;
 
 import java.io.IOException;
 import java.util.HashMap;

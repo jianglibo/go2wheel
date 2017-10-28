@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp;
+package com.qcloud.weapp;
 
 import java.io.BufferedReader;
 import java.io.IOException;

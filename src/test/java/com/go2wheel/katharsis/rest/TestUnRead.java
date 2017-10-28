@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest;
+package com.go2wheel.katharsis.rest;
 
 import com.go2wheel.KatharsisBase;
 

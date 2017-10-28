@@ -1,4 +1,4 @@
-﻿package com.go2wheel.webapp;
+package com.go2wheel.webapp;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

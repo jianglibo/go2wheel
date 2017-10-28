@@ -1,4 +1,4 @@
-﻿package com.go2wheel.aop;
+package com.go2wheel.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.message.passivereply;
+package com.go2wheel.message.passivereply;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;

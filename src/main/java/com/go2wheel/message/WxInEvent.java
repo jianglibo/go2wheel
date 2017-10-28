@@ -1,4 +1,4 @@
-﻿package com.go2wheel.message;
+package com.go2wheel.message;
 
 public abstract class WxInEvent extends WxBody {
 

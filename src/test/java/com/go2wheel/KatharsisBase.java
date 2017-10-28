@@ -1,4 +1,4 @@
-﻿package com.go2wheel;
+package com.go2wheel;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;

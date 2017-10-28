@@ -1,4 +1,4 @@
-﻿package com.go2wheel.controller;
+package com.go2wheel.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

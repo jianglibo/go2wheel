@@ -1,4 +1,4 @@
-﻿package com.go2wheel.repository.specification;
+package com.go2wheel.repository.specification;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp.authorization;
+package com.qcloud.weapp.authorization;
 
 /**
  * 表示登录异常

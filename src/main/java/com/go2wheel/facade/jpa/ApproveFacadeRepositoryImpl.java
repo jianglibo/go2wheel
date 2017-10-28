@@ -1,4 +1,4 @@
-﻿package com.go2wheel.facade.jpa;
+package com.go2wheel.facade.jpa;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.exception;
+package com.go2wheel.katharsis.exception;
 
 import com.go2wheel.constant.AppErrorCodes;
 

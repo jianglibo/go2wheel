@@ -1,4 +1,4 @@
-﻿package com.qcloud.weapp;
+package com.qcloud.weapp;
 
 /**
  * 表示配置时产生的异常

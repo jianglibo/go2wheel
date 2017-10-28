@@ -1,4 +1,4 @@
-﻿package com.go2wheel.message;
+package com.go2wheel.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlCData;

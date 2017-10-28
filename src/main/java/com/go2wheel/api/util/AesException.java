@@ -1,4 +1,4 @@
-﻿package com.go2wheel.api.util;
+package com.go2wheel.api.util;
 
 @SuppressWarnings("serial")
 public class AesException extends Exception {

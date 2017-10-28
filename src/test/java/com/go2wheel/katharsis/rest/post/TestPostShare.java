@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest.post;
+package com.go2wheel.katharsis.rest.post;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.inboundhandler;
+package com.go2wheel.inboundhandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

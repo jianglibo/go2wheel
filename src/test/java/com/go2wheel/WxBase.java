@@ -1,4 +1,4 @@
-﻿package com.go2wheel;
+package com.go2wheel;
 
 import java.io.IOException;
 import java.nio.file.Files;

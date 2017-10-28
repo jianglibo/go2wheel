@@ -1,4 +1,4 @@
-﻿package com.go2wheel.fixturegen;
+package com.go2wheel.fixturegen;
 
 import org.junit.Test;
 

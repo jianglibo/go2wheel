@@ -1,4 +1,4 @@
-﻿package com.go2wheel.api;
+package com.go2wheel.api;
 
 import static org.junit.Assert.assertNotNull;
 

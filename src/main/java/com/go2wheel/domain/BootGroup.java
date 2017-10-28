@@ -1,4 +1,4 @@
-﻿package com.go2wheel.domain;
+package com.go2wheel.domain;
 
 import java.util.ArrayList;
 import java.util.List;

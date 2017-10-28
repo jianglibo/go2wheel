@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest.post;
+package com.go2wheel.katharsis.rest.post;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;

@@ -1,4 +1,4 @@
-﻿package com.go2wheel.vo;
+package com.go2wheel.vo;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

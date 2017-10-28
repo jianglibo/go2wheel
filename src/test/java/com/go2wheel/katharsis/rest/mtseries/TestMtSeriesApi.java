@@ -1,4 +1,4 @@
-﻿package com.go2wheel.katharsis.rest.mtseries;
+package com.go2wheel.katharsis.rest.mtseries;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;

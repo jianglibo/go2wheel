@@ -1,4 +1,4 @@
-﻿package com.go2wheel.message.passivereply;
+package com.go2wheel.message.passivereply;
 
 import java.io.IOException;
 import java.util.ArrayList;
