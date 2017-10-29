@@ -1,6 +1,7 @@
 package com.go2wheel.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -8,11 +9,13 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import com.go2wheel.annotation.DtoToEntityIgnore;
 import com.go2wheel.constant.EnginType;
 import com.go2wheel.constant.Market;
 
@@ -31,6 +34,10 @@ public class MtModel extends BaseEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="MTSERIES_ID")
 	private MtSeries mtSeries;
+	
+	@DtoToEntityIgnore
+	@ManyToMany(mappedBy="mtModels", fetch= FetchType.LAZY)
+	private Set<Accessory> accessories;
 	
 	private int year;
 	
@@ -475,6 +482,14 @@ public class MtModel extends BaseEntity {
 
 	public void setGroundClearance(int groundClearance) {
 		this.groundClearance = groundClearance;
+	}
+
+	public Set<Accessory> getAccessories() {
+		return accessories;
+	}
+
+	public void setAccessories(Set<Accessory> accessories) {
+		this.accessories = accessories;
 	}
 	
 }
