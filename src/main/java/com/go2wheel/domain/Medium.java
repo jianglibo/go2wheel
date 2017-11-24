@@ -21,7 +21,7 @@ public class Medium extends BaseEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String orignName;
+	private String originName;
 	
 	@ManyToOne
 	private BootUser creator;
@@ -65,11 +65,11 @@ public class Medium extends BaseEntity {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
-	public String getOrignName() {
-		return orignName;
+	public String getOriginName() {
+		return originName;
 	}
-	public void setOrignName(String orignName) {
-		this.orignName = orignName;
+	public void setOriginName(String originName) {
+		this.originName = originName;
 	}
 	public BootUser getCreator() {
 		return creator;

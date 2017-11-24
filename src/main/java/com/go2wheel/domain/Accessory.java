@@ -24,6 +24,9 @@ public class Accessory extends BaseEntity {
     
     private String description;
     
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Tag> tags;
+    
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<MtModel> mtModels;
 
@@ -70,6 +73,14 @@ public class Accessory extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 }

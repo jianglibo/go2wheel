@@ -46,6 +46,9 @@ public class BootUser extends BaseEntity {
     @OneToMany(mappedBy="creator", fetch=FetchType.LAZY)
     private List<Post> posts = new ArrayList<>();
     
+    @OneToMany(mappedBy="owner", fetch = FetchType.LAZY)
+    private List<OwnerShip> ownerships;
+    
     @Enumerated(EnumType.STRING)
     private Gender gender = Gender.FEMALE;
     

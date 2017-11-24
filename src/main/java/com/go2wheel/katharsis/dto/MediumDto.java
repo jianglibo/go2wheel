@@ -24,7 +24,7 @@ public class MediumDto extends DtoBase {
 	
 	private long size;
 	
-	private String orignName;
+	private String originName;
 	
 	@JsonApiRelation(lookUp=LookupIncludeBehavior.AUTOMATICALLY_WHEN_NULL,serialize=SerializeType.LAZY, opposite="media")
 	private List<PostDto> posts;
@@ -78,13 +78,13 @@ public class MediumDto extends DtoBase {
 	}
 
 
-	public String getOrignName() {
-		return orignName;
+	public String getOriginName() {
+		return originName;
 	}
 
 
-	public void setOrignName(String orignName) {
-		this.orignName = orignName;
+	public void setOriginName(String originName) {
+		this.originName = originName;
 	}
 
 

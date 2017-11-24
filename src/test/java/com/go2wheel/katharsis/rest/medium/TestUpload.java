@@ -56,7 +56,7 @@ public class TestUpload extends KatharsisBase {
 		List<MediumDto> media = getList(response, MediumDto.class);
 		MediumDto m = media.get(0);
 		assertThat(m.getContentType(), equalTo("application/octet-stream"));
-		assertTrue("should end with .jpg", m.getOrignName().endsWith(".jpg"));
+		assertTrue("should end with .jpg", m.getOriginName().endsWith(".jpg"));
 		assertTrue("should end with .jpg", m.getUrl().endsWith(".jpg"));
 	}
 

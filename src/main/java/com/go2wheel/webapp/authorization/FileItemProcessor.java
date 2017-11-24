@@ -72,7 +72,7 @@ public class FileItemProcessor {
 		mi.setLocalPath(destFolder.relativize(destPath).toString());
 		mi.setSize(Files.size(destPath));
 		mi.setContentType(item.getContentType());
-		mi.setOrignName(originName);
+		mi.setOriginName(originName);
 		mi.setCreator(userRepository.findOne(SecurityUtil.getLoginUserId(), false));
 		mi.setUrl(appConfig.getUploadLinkBase() + mi.getLocalPath());
 		mi = mediumRepository.save(mi, null);

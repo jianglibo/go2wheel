@@ -39,6 +39,9 @@ public class MtModel extends BaseEntity {
 	@ManyToMany(mappedBy="mtModels", fetch= FetchType.LAZY)
 	private Set<Accessory> accessories;
 	
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Tag> tags;
+	
 	private int year;
 	
 	@Enumerated(EnumType.STRING)
@@ -491,5 +494,12 @@ public class MtModel extends BaseEntity {
 	public void setAccessories(Set<Accessory> accessories) {
 		this.accessories = accessories;
 	}
-	
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
 }

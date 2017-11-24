@@ -32,6 +32,8 @@ public class Manufacturer extends BaseEntity {
 	
 	private String founder;
 	
+	private String slogan;
+	
 	@Temporal(TemporalType.DATE)
 	private Date foundTime;
 	
@@ -108,5 +110,13 @@ public class Manufacturer extends BaseEntity {
 
 	public void setWebsites(Map<String, String> websites) {
 		this.websites = websites;
+	}
+
+	public String getSlogan() {
+		return slogan;
+	}
+
+	public void setSlogan(String slogan) {
+		this.slogan = slogan;
 	}
 }

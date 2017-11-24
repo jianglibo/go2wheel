@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -69,9 +70,20 @@ public class TestMenufacturerApi  extends KatharsisBase {
 		String url = getBaseURI() +  b.build();
 		
 		response = requestForBody(null, url);
-		writeDto(response, getResourceName(), ActionNames.GET_LIST);
+//		writeDto(response, getResourceName(), ActionNames.GET_LIST);
 		List<ManufacturerDto> newPosts = getList(response, ManufacturerDto.class);
 		assertThat(newPosts.size(), equalTo(1));
+	}
+	
+	@Test
+	public void getlist() throws IOException {
+		IntStream.range(0, 12).forEach(i -> {
+			mftu.createOne("kawasaki" + i);
+		});
+		response = requestForBody(null, getBaseURI());
+		writeDto(response, getResourceName(), ActionNames.GET_LIST);
+		List<ManufacturerDto> newPosts = getList(response, ManufacturerDto.class);
+		assertThat(newPosts.size(), equalTo(12));
 	}
 	
 	

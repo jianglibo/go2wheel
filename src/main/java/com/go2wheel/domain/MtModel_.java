@@ -12,12 +12,13 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2017-10-29T08:52:34.082+0800")
+@Generated(value="Dali", date="2017-11-07T09:18:57.598+0800")
 @StaticMetamodel(MtModel.class)
 public class MtModel_ extends BaseEntity_ {
 	public static volatile SingularAttribute<MtModel, String> name;
 	public static volatile SingularAttribute<MtModel, MtSeries> mtSeries;
 	public static volatile SetAttribute<MtModel, Accessory> accessories;
+	public static volatile SetAttribute<MtModel, Tag> tags;
 	public static volatile SingularAttribute<MtModel, Integer> year;
 	public static volatile SingularAttribute<MtModel, Market> market;
 	public static volatile SingularAttribute<MtModel, String> frameType;

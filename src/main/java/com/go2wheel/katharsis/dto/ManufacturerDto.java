@@ -34,6 +34,8 @@ public class ManufacturerDto extends DtoBase {
 	
 	private String logo;
 	
+	private String slogan;
+	
 	@Lob
 	private String legend;
 	
@@ -105,6 +107,14 @@ public class ManufacturerDto extends DtoBase {
 
 	public void setMtSerieses(List<MtSeriesDto> mtSerieses) {
 		this.mtSerieses = mtSerieses;
+	}
+
+	public String getSlogan() {
+		return slogan;
+	}
+
+	public void setSlogan(String slogan) {
+		this.slogan = slogan;
 	}
 
 }
