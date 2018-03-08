@@ -145,7 +145,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.2.1'
+    gradleVersion = '4.6'
 }
 
 task printVars {
@@ -236,6 +236,7 @@ task eliminateBom {
             if (file.name.endsWith('.java')) {
             	def c = file.getText('utf8')
 			 	file.setText(c, 'utf8')
+			 	println file.name
             }
         }
 		sourceSets.test.java.each { file -> 
